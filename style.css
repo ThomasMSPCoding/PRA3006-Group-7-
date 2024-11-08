@@ -32,11 +32,8 @@ header{
 h1{
     font-size: 200%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    padding: 1rem;
-    text-align: center;
+    
+    
 }
 
 p{
