@@ -1,12 +1,5 @@
-.overlay {
-    position: fixed;
-    top:0;
-    left:0;
-    width:100 ;
-    height: 100;
-    background-color: rgba(255, 255, 255, 0.85);
-    z-index: 1;
-}
+
+
 
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -19,6 +12,15 @@ body{
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
+
+   
+}
+
+
+
+header,section,nav,footer{
+    position: relative;
+    z-index: 1;
 }
 
 
