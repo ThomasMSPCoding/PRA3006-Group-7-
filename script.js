@@ -3,71 +3,70 @@ class StickyNavigation {
         this.currentId = null;
         this.currentTab = null;
         this.tabContainerHeight = 70;
-        let self = this;
-        $('.Navigation_tabs').click(function(event) { 
-            self.onTabClick(event, $(this)); 
-        });
-        $(window).scroll(() => { this.onScroll(); });
-        $(window).resize(() => { this.onResize(); });
+        this.tabs = document.querySelectorAll('.Navigation_tabs');
+        this.tabContainer = document.querySelector('.Navigation_tabs_container');
+        this.slider = document.querySelector('.Navigation_tabs_slider');
+
+        this.bindEvents();
     }
-    
+
+    bindEvents() {
+        this.tabs.forEach(tab => {
+            tab.addEventListener('click', (event) => this.onTabClick(event, tab));
+        });
+        window.addEventListener('scroll', () => this.onScroll());
+        window.addEventListener('resize', () => this.onResize());
+    }
+
     onTabClick(event, element) {
         event.preventDefault();
-        let targetId = element.attr('href');
-        let scrollTop = $(targetId).offset().top - this.tabContainerHeight + 1;
-        $('html, body').animate({ scrollTop: scrollTop }, 600);
+        let targetId = element.getAttribute('href');
+        let targetElement = document.querySelector(targetId);
+        let scrollTop = targetElement.offsetTop - this.tabContainerHeight + 1;
+        window.scrollTo({
+            top: scrollTop,
+            behavior: 'smooth'
+        });
     }
-    
+
     onScroll() {
-        this.checkTabContainerPosition();
         this.findCurrentTabSelector();
     }
-    
+
     onResize() {
-        if(this.currentId) {
+        if (this.currentTab) {
             this.setSliderCss();
         }
     }
-    
-    checkTabContainerPosition() {
-        let offset = $('.Navigation_tabs_container').offset().top + $('.Navigation_tabs_container').height() - this.tabContainerHeight;
-        if($(window).scrollTop() > offset) {
-            $('.Navigation_tabs_container').addClass('Navigation_tabs_container--top');
-        } 
-        else {
-            $('.Navigation_tabs_container').removeClass('Navigation_tabs_container--top');
-        }
-    }
-    
-    findCurrentTabSelector(element) {
+
+    findCurrentTabSelector() {
         let newCurrentId;
         let newCurrentTab;
-        let self = this;
-        $('.Navigation_tabs').each(function() {
-            let id = $(this).attr('href');
-            let offsetTop = $(id).offset().top - self.tabContainerHeight;
-            let offsetBottom = $(id).offset().top + $(id).height() - self.tabContainerHeight;
-            if($(window).scrollTop() > offsetTop && $(window).scrollTop() < offsetBottom) {
+        
+        this.tabs.forEach(tab => {
+            let id = tab.getAttribute('href');
+            let targetElement = document.querySelector(id);
+            let offsetTop = targetElement.offsetTop - this.tabContainerHeight;
+            let offsetBottom = offsetTop + targetElement.offsetHeight;
+
+            if (window.scrollY > offsetTop && window.scrollY < offsetBottom) {
                 newCurrentId = id;
-                newCurrentTab = $(this);
+                newCurrentTab = tab;
             }
         });
-        if(this.currentId != newCurrentId || this.currentId === null) {
+
+        if (this.currentId !== newCurrentId || this.currentId === null) {
             this.currentId = newCurrentId;
             this.currentTab = newCurrentTab;
             this.setSliderCss();
         }
     }
-    
+
     setSliderCss() {
-        let width = 0;
-        let left = 0;
-        if(this.currentTab) {
-            width = this.currentTab.css('width');
-            left = this.currentTab.offset().left;
+        if (this.currentTab) {
+            this.slider.style.width = `${this.currentTab.offsetWidth}px`;
+            this.slider.style.left = `${this.currentTab.offsetLeft}px`;
         }
-        $('.Navigation_tabs_slider').css('width', width);
-        $('.Navigation_tabs_slider').css('left', left);
     }
 }
 
