@@ -18,10 +18,6 @@ body{
 
 
 
-header,section,nav,footer{
-    position: relative;
-    z-index: 1;
-}
 
 
 header{
@@ -38,17 +34,34 @@ h1{
     
 }
 
-p{
-    
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    padding: 1rem;
-    text-align: center;
-    background-color: aliceblue;
-    border: 5px ;
-    padding: 10px;
-    margin: 25px auto;
+footer {
+    width: 100%;
+    background-color: #2a2a72; 
+    color: #fff; 
+    padding: 20px 0; 
+    margin: 0; 
+    box-sizing: border-box;
+    text-align: center; 
 }
+
+.footer-content {
+    max-width: 1210px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-content p{
+    text-align: center;
+    width: 100%;
+}
+
+
 
 article{
     
@@ -94,7 +107,7 @@ section{
     position: sticky;
     top: 0;
     width: 100%;
-    height: 70px;
+    height:70px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     background: #fff;
     z-index: 10;
@@ -128,16 +141,32 @@ section{
 }
 
 .Navigation_tabs_main {
-    padding-top: 70px; /* To offset the fixed navigation */
+    padding-top:70px; 
 }
 
 .Navigation_tabs_slide {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #eee;
+    background: #fff;
     text-align: center;
-    padding: 2em;
+    padding: 15em;
+    width: 700px;
+    margin: 40px auto;
+    border-radius:30px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+
+.interaction-link{
+    font-size: 1.17em;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-decoration: none;
+    color:inherit;
+    display: block;
+}
+.interaction-link:hover{
+    text-decoration: underline;
 }
