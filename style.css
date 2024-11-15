@@ -7,7 +7,7 @@ body{
     padding: 0;
     
     color: #333;
-    background-image: url("img/background\ image.png");
+    background-color: antiquewhite;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -169,4 +169,15 @@ section{
 }
 .interaction-link:hover{
     text-decoration: underline;
+}
+
+.Main{
+    
+    background: #fff;
+    text-align: center;
+    padding: 15em;
+    width: 700px;
+    margin: 40px auto;
+    border-radius:30px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);  
 }
