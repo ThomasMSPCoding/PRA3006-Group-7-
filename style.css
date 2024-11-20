@@ -327,3 +327,25 @@ section{
     opacity: 1;
     transform: translateY(0);
 }
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.Main {
+    background: #fff;
+    padding: 2em;
+    height: auto;
+    width: 1000px;
+    margin: 40px auto; 
+    border-radius: 30px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2); 
+}

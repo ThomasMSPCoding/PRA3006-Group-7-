@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OncoMap</title>
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .Main {
+            padding: 1em;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,8 +29,22 @@
         <a href="index.html" class="button-17" role="button">Return</a>
     </header>
 
+    
+
     <section class="Main">
-        
+        <div class="image-container">
+            <img src="img/human anatomy male&female.png" alt="Human Anatomy" usemap="#bodymap" width="1080" height="1080">
+        </div>
+
+        <map name="bodymap">
+            <area shape="circle" coords="200,100,20" href="#" alt="Head" onclick="showInfo('Head')">
+            <area shape="rect" coords="180,140,220,200" href="#" alt="Torso" onclick="showInfo('Torso')">
+            <area shape="poly" coords="170,210,190,210,200,280,180,280" href="#" alt="Left Leg" onclick="showInfo('LeftLeg')">
+            <area shape="poly" coords="210,210,230,210,240,280,220,280" href="#" alt="Right Leg" onclick="showInfo('RightLeg')">
+            <area shape="poly" coords="160,140,180,140,170,200,150,200" href="#" alt="Left Arm" onclick="showInfo('LeftArm')">
+            <area shape="poly" coords="220,140,240,140,250,200,230,200" href="#" alt="Right Arm" onclick="showInfo('RightArm')">
+        </map>
+    
     </section>
 
 
