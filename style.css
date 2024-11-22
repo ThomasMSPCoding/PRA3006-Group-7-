@@ -316,7 +316,7 @@ section{
   z-index: 0;
 }
 
-/* Scroll Animation */
+/* Scroll Animation 
 .fade-in {
     opacity: 0;
     transform: translateY(50px);
@@ -326,7 +326,7 @@ section{
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
-}
+} */
 
 .image-container {
     display: flex;
