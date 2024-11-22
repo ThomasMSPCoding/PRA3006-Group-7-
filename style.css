@@ -158,37 +158,76 @@ section{
 }
 
 .Navigation_tabs_main {
-    padding-top:px; 
+    padding-top:20px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px; 
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .Navigation_tabs_slide {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background: #fff;
-    text-align: center;
-    padding: 3em;
-    width: 700px;
-    margin: 20px auto;
+    padding: 2em;
     border-radius:30px;
     box-shadow:0 15px 30px rgba(0,0,0,0.2);
 }
 
+.Navigation_tabs_slide h1 {
+    margin-top: 0;
+    color: #2a2a72;
+}
+
+.Navigation_tabs_slide p {
+    line-height: 1.6;
+}
+
 .interaction-link{
-    font-size: 1.17em;
-    font-weight: bold;
+    display: inline-block;
     margin-top: 1em;
-    margin-bottom: 1em;
+    padding: 10px 20px;
+    background-color: #2a2a72;
+    color: white;
     text-decoration: none;
-    color:inherit;
-    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 .interaction-link:hover{
-    text-decoration: underline;
+    background-color: #1a1a52;
+}
+
+#tab-index{
+    grid-column: 1/-1;
+    grid-row: 1;
+    text-align: center;
+}
+
+#tab-interaction{
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#tab-Cancer{
+    grid-column: 2;
+    grid-row: 2
 }
 
 
+@media (max-width: 768px) {
+    .Navigation_tabs_main {
+        grid-template-columns: 1fr;
+    }
+
+    #tab-interaction,
+    #tab-Cancer,
+    #tab-source {
+        grid-column: 1 / -1;
+    }
+
+    #tab-Cancer {
+        grid-row: 3;
+    }
+}
 
 .Main{
     
