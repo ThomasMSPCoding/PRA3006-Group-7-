@@ -11,7 +11,7 @@ class SPARQLQueryDispatcher {
 	}
 }
 
-const cancerType = [3658562, //lung
+const cancerName = [3658562, //lung
     192102, //skin
     128581, //breast
     181257, //prostate
@@ -26,9 +26,9 @@ const cancerType = [3658562, //lung
     18555025]; //colon
 
     //Generate query for each cancer type
-    function getQuery(cancerTypes) {
+    function getQuery(cancerNames) {
         // Add "Q" prefix to each number in the array
-        const formattedValue = cancerTypes.map((type) => `wd:Q${type}`);
+        const formattedValue = cancerNames.map((name) => `wd:Q${name}`);
       
         // Generate the SPARQL query
         var sparqlQuery = `SELECT DISTINCT ?disease ?diseaseLabel 
@@ -51,7 +51,7 @@ const cancerType = [3658562, //lung
       }
       
 // Generate the query using the cancerType array
-const sparqlQuery = getQuery(cancerType);
+const sparqlQuery = getQuery(cancerName);
 
 // SPARQL endpoint URL
 const endpointUrl = 'https://query.wikidata.org/sparql';
