@@ -1,4 +1,4 @@
-/* General Body Styles */
+/* General Body Styles, this section gives a design for the background image */
 body {
     margin: 0;
     font-family: 'TT Hoves', Arial, sans-serif;
@@ -11,7 +11,7 @@ body {
     background-repeat: no-repeat;
 }
 
-/* Darkening Filter for the Background */
+/* Darkening Filter for the Background, like having a layer before */
 body::before {
     content: '';
     position: absolute;
