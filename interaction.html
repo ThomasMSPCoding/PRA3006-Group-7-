@@ -2,12 +2,12 @@
 <html lang="en"> <!-- Html set in eng -->
 <head>
     <meta charset="UTF-8"> <!--Html set in UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Responsiveness of the webpage design -->
     <title>OncoMap - Interactive Body</title>
-    <link rel="stylesheet" href="interactive.css">
+    <link rel="stylesheet" href="interactive.css"> <!--Links to interactive bodymap design -->
 </head>
 <body>
-    <!-- Disclaimer Modal -->
+    <!-- Disclaimer Modal included with javascript at the bottom -->
 <div id="disclaimerModal" class="modal">
     <div class="modal-content">
         <h2>Important Disclaimer</h2>
@@ -44,7 +44,7 @@
 </header>
 
         <!-- Body Map Section -->
-        <main>
+        <main> <!--Main conetent of the body's webpage -->
             <section class="bodymap-section">
                 <h1>Explore the Human Body</h1>
                 <hr />
@@ -55,7 +55,7 @@
                 <div class="image-container">
                     <img src="img/Body.png" usemap="#image-map" alt="Interactive Human Body Map">
                 </div>
-                
+                <!--Using image with coordinates in specific areas with specilized tool and linking it to a resource page for more informations -->
                 <map name="image-map">
                     <!-- Female Map -->
                     <area alt="Brain Female" title="Brain Female" href="https://www.wikidata.org/wiki/Q9303627" coords="1439,148,1512,146,1551,119,1556,83,1546,47,1532,25,1490,10,1454,12,1415,29,1398,61,1395,103,1405,124" shape="poly" class="highlight-area brain-female" data-info="This is detailed information about the Brain.">
