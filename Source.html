@@ -3,63 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OncoMap</title>
+    <title>Contact Us - OncoMap</title>
     <link rel="stylesheet" href="style.css">
-    <style class="index-image">
-        body{
-            background-image: url(img/backgroundimage.png);
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(img/backgroundimage.png);
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-        }
-        img{
-            opacity: 0.7;
-        }
-        img:hover{
-            opacity: 1;
-        }
-    </style>
 </head>
 <body>
-    <header>
-        <h1 id="Title">OncoMap</h1>
-        
-    </header>
+    <div class="main-container">
+        <!-- Navigation Bar -->
+        <header>
+            <nav>
+                <ul class="nav-links">
+                    <div class="nav-left">
+                        <li><a href="index.html" class="nav-link">INDEX</a></li>
+                        <li><a href="interaction.html" class="nav-link">INTERACTIVE BODY</a></li>
+                    </div>
+                    <div class="logo">
+                        <img src="img/Logo.png" alt="OncoMap Logo">
+                    </div>
+                    <div class="nav-right">
+                        <li><a href="research.html" class="nav-link">ADDITIONAL INFO</a></li>
+                        <li><a href="Source.html" class="nav-link">SOURCES</a></li>
+                    </div>
+                </ul>
+            </nav>
+        </header>
 
-    <nav class="Navigation_tabs_container">
-        <a class="Navigation_tabs" href="index.html">Index</a>
-        <a class="Navigation_tabs" href="interaction.html">Human Body Interaction</a>
-        <a class="Navigation_tabs" href="research.html">Additional Information</a>
-        <a class="Navigation_tabs" href="Source.html">Source & Contact</a>
-        <span class="Navigation_tabs_slider"></span>
-    </nav>
-    <section class="Mainsecond">
-        <section>
-            <!-- Change your contact details in both sectors-->
-            <h2 class="background_contact">Contact Information</h2>
-            <div></div>
-            <a href="mailto:addabbo.thomas@student.maastrichtuniversity.nl">Thomas Addabbo</a>
-            <div></div>
-            <a href="mailto:b.woessner@student.maastrichtuniversity.nl">Bernhard Woessner</a>
-            <div></div>
-            <a href="mailto:d.atalan@student.maastrichtuniversity.nl">Derin Atalan</a>
-            <div></div>
-            <a href="mailto:l.brijan@student.maastrichtuniversity.nl">Laura Brijan</a>
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="contact-box">
+                <h1>Contact Us</h1>
+                <hr />
+                <p>If you have any questions, feedback, or concerns, feel free to contact us via email or send us a message using the form below.</p>
+                <div class="contact-info">
+                    <h2>Team Members:</h2>
+                    <ul>
+                        <li><a href="mailto:addabbo.thomas@student.maastrichtuniversity.nl">Thomas Addabbo</a></li>
+                        <li><a href="mailto:b.woessner@student.maastrichtuniversity.nl">Bernhard Woessner</a></li>
+                        <li><a href="mailto:d.atalan@student.maastrichtuniversity.nl">Derin Atalan</a></li>
+                        <li><a href="mailto:l.brijan@student.maastrichtuniversity.nl">Laura Brijan</a></li>
+                    </ul>
+                </div>
+
+                <!-- Message Form -->
+                <div class="contact-form">
+                    <form action="mailto:b.woessner@student.maastrichtuniversity.nl" method="post" enctype="text/plain">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                        <label for="email">Your Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                        <label for="message">Your Message:</label>
+                        <textarea id="message" name="message" placeholder="Enter your message" rows="6" required></textarea>
+
+                        <button type="submit" class="send-message-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
         </section>
-    </section>
 
-
-
-
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Programming in the Life Sciences Project Oncomap. All rights reserved</p>
-        </div>
-        
-    </footer>
-
-    
-
+        <!-- Footer -->
+        <footer>
+            <p>© 2024 PROGRAMMING IN THE LIFE SCIENCES PROJECT ONCOMAP. ALL RIGHTS RESERVED</p>
+        </footer>
+    </div>
 </body>
 </html>

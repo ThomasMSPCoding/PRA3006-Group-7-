@@ -3,55 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OncoMap</title>
+    <title>OncoMap - Additional Information</title>
     <link rel="stylesheet" href="style.css">
-
-    <style class="index-image">
-        body{
-            background-image: url(img/backgroundimage.png);
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(img/backgroundimage.png);
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-        }
-        img{
-            opacity: 0.7;
-        }
-        img:hover{
-            opacity: 1;
-        }
-    </style>
 </head>
 <body>
-    <header>
-        <h1 id="Title">OncoMap</h1>
-       
-    </header>
-    <nav class="Navigation_tabs_container">
-        <a class="Navigation_tabs" href="index.html">Index</a>
-        <a class="Navigation_tabs" href="interaction.html">Human Body Interaction</a>
-        <a class="Navigation_tabs" href="research.html">Additional Information</a>
-        <a class="Navigation_tabs" href="Source.html">Source & Contact</a>
-        <span class="Navigation_tabs_slider"></span>
-    </nav>
-    <section class="Main">
-    
-        <div id="results"></div>
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Navigation Bar -->
+        <header>
+            <nav>
+                <ul class="nav-links">
+                    <div class="nav-left">
+                        <li><a href="index.html" class="nav-link">Index</a></li>
+                        <li><a href="interaction.html" class="nav-link">Interactive Body</a></li>
+                    </div>
+                    <div class="logo">
+                        <img src="img/Logo.png" alt="OncoMap Logo">
+                    </div>
+                    <div class="nav-right">
+                        <li><a href="research.html" class="nav-link">Additional Info</a></li>
+                        <li><a href="Source.html" class="nav-link">Sources</a></li>
+                    </div>
+                </ul>
+            </nav>
+        </header>
 
-    </section>
+        <!-- Content Section -->
+        <main>
+            <section class="query-section">
+                <h1 class="additional-info-title">Additional Information</h1>
+                <hr />
+                <p class="additional-info-description">
+                    Here you can find detailed information about various cancers, their symptoms,
+                    treatments, and affected locations, all sourced via Wikidata SPARQL queries.
+                </p>
+                <div id="results" class="results-container"></div>
+            </section>
+        </main>
 
-    
+        <!-- Footer -->
+        <footer>
+            <div class="footer-links">
+                <div class="footer-nav">
+                    <a href="Source.html" class="footer-link">Contact Us</a>
+                    <a href="#" class="footer-link">Copy Right</a>
+                    <a href="#" class="footer-link">Disclaimer</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                </div>
+                <p>© 2024 Programming in the Life Sciences Project Oncomap. All rights reserved</p>
+            </div>
+        </footer>
+    </div>
 
-
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Programming in the Life Sciences Project Oncomap. All rights reserved</p>
-        </div>
-        
-    </footer>
-
+    <!-- JavaScript -->
     <script src="query.js"></script>
-
 </body>
 </html>
-

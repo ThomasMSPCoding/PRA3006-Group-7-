@@ -5,82 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OncoMap</title>
     <link rel="stylesheet" href="style.css">
-    <style class="index-image">
-        body{
-            background-image: url(img/backgroundimage.png);
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(img/backgroundimage.png);
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-        }
-        img{
-            opacity: 0.7;
-        }
-        img:hover{
-            opacity: 1;
-        }
-    </style>
-    
-    
 </head>
 <body>
-    
-
-    <header>
-        <h1 id="Title">OncoMap</h1>
-        <img src="img/Human body script.png" alt="Human body logo" class="logo">
-    </header>
-
-    <nav class="Navigation_tabs_container">
-        <a class="Navigation_tabs" href="index.html">Index</a>
-        <a class="Navigation_tabs" href="interaction.html">Human Body Interaction</a>
-        <a class="Navigation_tabs" href="research.html">Additional Information</a>
-        <a class="Navigation_tabs" href="Source.html">Source & Contact</a>
-        <span class="Navigation_tabs_slider"></span>
-    </nav>
-
-    <main class="Navigation_tabs_main">
-        <section class="Navigation_tabs_slide fade-in" id="tab-index">
-            <h1>Welcome to OncoMap</h1>
-            <p>
-                OncoMap is a student-led initiative from Maastricht University designed to help 
-                visualize common cancers, understand their symptoms, and learn more about them.
-            </p>
-            <p>
-                Our goal is to provide an engaging and educational resource that simplifies 
-                the complex information surrounding cancer. Whether you're a curious learner or 
-                someone seeking to expand their knowledge, OncoMap is here to guide you.
-            </p>
-            <p>
-                <strong>Important Disclaimer:</strong> This website is a project and is not intended 
-                for medical use. If you are experiencing any symptoms or have concerns, 
-                we strongly encourage you to consult a qualified medical professional. 
-                Your health and well-being are our utmost priority.
-            </p>
-        </section>
-        <section class="Navigation_tabs_slide fade-in" id="tab-interaction">
-            <h1>Interaction</h1>
-            <h3>Smth about in interaction</h3>
-            <a href="interaction.html" class=""interaction-link>Interaction page</a>
-        </section>
-        <section class="Navigation_tabs_slide fade-in" id="tab-Cancer">
-            <h1>Cancer Types</h1>
-            <h3>Click the link below to view papers of different varieties of cancer from this project</h3>
-            <a href="Cancer.html" class=""interaction-link>Cancer page</a>
-        </section>
-    </main>
-
-   
-
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Programming in the Life Sciences Project Oncomap. All rights reserved</p>
-        </div>
+    <!-- Main stuff -->
+    <div class="main-container">
+        <!-- Navigation Bar -->
+        <header>
+            <nav>
+                <ul class="nav-links">
+                    <div class="nav-left">
+                        <li><a href="index.html" class="nav-link">INDEX</a></li>
+                        <li><a href="interaction.html" class="nav-link">INTERACTIVE BODY</a></li>
+                    </div>
+                    <div class="logo">
+                        <img src="img/Logo.png" alt="OncoMap Logo">
+                    </div>
+                    <div class="nav-right">
+                        <li><a href="research.html" class="nav-link">ADDITIONAL INFO</a></li>
+                        <li><a href="Source.html" class="nav-link">SOURCES</a></li>
+                    </div>
+                </ul>
+            </nav>
+        </header>
         
-    </footer>
+        <!-- Main Section -->
+        <main>
+            <div class="main-content">
+                <h1 class="main-title">
+                    A clear guide to understanding cancer's<br> 
+                    journey through the human body
+                </h1>
+            </div>
+        </main>
 
-    <script src="script.js"></script>
+        <!-- Secondary Section -->
+        <section class="secondary-section">
+            <p class="subtitle">Maastricht University PRA3006</p>
+            <button class="get-started-btn" onclick="scrollToSection()">GET STARTED</button>
+        </section>
 
+        <!-- Bottom Section -->
+        <footer>
+            <p>© 2024 PROGRAMMING IN THE LIFE SCIENCES PROJECT ONCOMAP. ALL RIGHTS RESERVED</p>
+        </footer>
+    </div>
+
+    <!-- Welcome Section -->
+    <div class="welcome-container">
+        <section class="welcome-section">
+            <h1>WELCOME TO ONCOMAP</h1>
+            <hr />
+            <p>
+                OncoMap is a student-led initiative from Maastricht University designed to help visualize
+                common cancer locations, understand their symptoms, and learn more about them.
+            </p>
+            <p>
+                Our goal is to provide an engaging and educational resource that simplifies the complex
+                information surrounding cancer. Whether you're a curious learner or someone seeking to
+                expand their knowledge, OncoMap is here to guide you.
+            </p>
+            <p class="disclaimer">
+                <strong style="color: red;">Important Disclaimer:</strong> This website is a project and
+                is not intended for medical use. If you are experiencing any symptoms or have concerns, we
+                strongly encourage you to consult a qualified medical professional. Your health and
+                well-being are our utmost priority.
+            </p>
+        </section>
+    </div>
     
+    <div class="final-section" id="get-started-section">
+        <h2>GET STARTED</h2>
+        <hr />
+        <div class="final-cards">
+            <div class="card explore-card" onclick="window.location.href='interaction.html';">
+                <p>Explore the OncoMap</p>
+            </div>
+            <div class="card cancer-card" onclick="window.location.href='research.html';">
+                <p>Cancer Types</p>
+            </div>
+        </div>
+        <footer class="footer-links">
+            <div class="footer-nav">
+                <a href="Source.html" class="footer-link">CONTACT US</a>
+                <a href="#" class="footer-link">COPY RIGHT</a>
+                <a href="#" class="footer-link">DISCLAIMER</a>
+                <a href="#" class="footer-link">PRIVACY POLICY</a>
+            </div>
+            <p>© 2024 PROGRAMMING IN THE LIFE SCIENCES PROJECT ONCOMAP. ALL RIGHTS RESERVED</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function scrollToSection() {
+            const section = document.getElementById('get-started-section');
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
 </body>
 </html>
