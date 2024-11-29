@@ -135,18 +135,18 @@ area:hover {
     outline: 2px solid rgba(0, 0, 255, 0.5); /* Blue outline on hover */
 }
 
-/* Footer */
-footer {
-    background-color: rgba(7, 8, 45, 0.6); /* Dark footer background */
-    padding: 20px;
+/* Footer Styling */
+.footer-links {
+    background-color: rgba(7, 8, 45, 0.8); /* Darker background for contrast */
+    padding: 20px 30px; /* Adjust padding for spacing */
     color: white;
-    text-align: center;
+    text-align: center; /* Center-align the content */
 }
 
-.footer-links {
+.footer-nav {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: center; /* Center the links */
+    gap: 30px; /* Space between the links */
     margin-bottom: 10px;
 }
 
@@ -154,7 +154,7 @@ footer {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 1rem;
     transition: color 0.3s ease-in-out;
 }
 
@@ -162,9 +162,10 @@ footer {
     color: lightgray;
 }
 
-footer p {
-    font-size: 0.8rem;
+.footer-links p {
+    font-size: 0.9rem;
     margin-top: 10px;
+    color: #ddd; /* Subtle color for less emphasis */
 }
 
 /* Responsive Design */
