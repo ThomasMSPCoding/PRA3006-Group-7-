@@ -88,7 +88,7 @@
 
         <footer class="footer-links">
             <div class="footer-nav">
-                <a href="contact.html" class="footer-link">Contact Us</a>
+                <a href="Source.html" class="footer-link">Contact Us</a>
                 <a href="#" class="footer-link">Copy Right</a>
                 <a href="#" class="footer-link">Disclaimer</a>
                 <a href="#" class="footer-link">Privacy Policy</a>
@@ -102,3 +102,17 @@
 </body>
 
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('disclaimerModal');
+        const acceptBtn = document.getElementById('acceptDisclaimer');
+
+        // Show the modal when the page loads
+        modal.classList.add('show');
+
+        // Hide the modal when the user clicks "I Understand"
+        acceptBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+    });
+</script>
