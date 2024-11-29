@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OncoMap</title>
-    <link rel="stylesheet" href="style.css">
+<html lang="en"> <!--HTML is set in english --> 
+<head> <!--Describes the sections of the code -->
+    <meta charset="UTF-8"> <!--Tells the brower it is encoded in UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Describes the responsive web-design -->
+    <title>OncoMap</title> <!--Tab name -->
+    <link rel="stylesheet" href="style.css"> <!--Links to css sytle sheet -->
 </head>
 <body>
     <!-- Main stuff -->
-    <div class="main-container">
+    <div class="main-container"> <!--Division of main conatainer -->
        <!-- Navigation Bar -->
 <header>
     <nav>
-        <ul class="nav-links">
+        <ul class="nav-links"> <!--Unordered bullet list -->
+            <!--By looking into the nav, this is the order from left to right with implimented logo which brings you back to the index page -->
             <div class="nav-left">
                 <li><a href="index.html" class="nav-link">INDEX</a></li>
                 <li><a href="interaction.html" class="nav-link">INTERACTIVE BODY</a></li>
             </div>
             <div class="logo">
-                <a href="index.html">
+                <a href="index.html"> <!--Return back button -->
                     <img src="img/Logo.png" alt="OncoMap Logo">
                 </a>
             </div>
@@ -44,20 +45,20 @@
         <!-- Secondary Section -->
         <section class="secondary-section">
             <p class="subtitle">Maastricht University PRA3006</p>
-            <button class="get-started-btn" onclick="scrollToSection()">GET STARTED</button>
+            <button class="get-started-btn" onclick="scrollToSection()">GET STARTED</button>  <!-- javascript button function that brings you down to exploration section-->
         </section>
 
-        <!-- Bottom Section -->
+        <!-- Bottom Section / Footer section -->
         <footer>
             <p>© 2024 PROGRAMMING IN THE LIFE SCIENCES PROJECT ONCOMAP. ALL RIGHTS RESERVED</p>
         </footer>
     </div>
 
     <!-- Welcome Section -->
-    <div class="welcome-container">
+    <div class="welcome-container"> <!--Id is signle usage element on page and the class we use is for multiple elements-->
         <section class="welcome-section">
             <h1>WELCOME TO ONCOMAP</h1>
-            <hr />
+            <hr /> <!--Horizontal line-->
             <p>
                 OncoMap is a student-led initiative from Maastricht University designed to help visualize
                 common cancer locations, understand their symptoms, and learn more about them.
@@ -90,15 +91,15 @@
         <footer class="footer-links">
             <div class="footer-nav">
                 <a href="Source.html" class="footer-link">CONTACT US</a>
-                <a href="#" class="footer-link">COPY RIGHT</a>
-                <a href="#" class="footer-link">DISCLAIMER</a>
-                <a href="#" class="footer-link">PRIVACY POLICY</a>
+                <a href="#" class="footer-link">COPY RIGHT</a> <!--Prototype hyperlink -->
+                <a href="#" class="footer-link">DISCLAIMER</a> <!--Prototype hyperlink -->
+                <a href="#" class="footer-link">PRIVACY POLICY</a> <!--Prototype hyperlink -->
             </div>
             <p>© 2024 PROGRAMMING IN THE LIFE SCIENCES PROJECT ONCOMAP. ALL RIGHTS RESERVED</p>
         </footer>
     </div>
 
-    <!-- JavaScript -->
+    <!-- JavaScript Section:Get started button with scroll down function -->
     <script>
         function scrollToSection() {
             const section = document.getElementById('get-started-section');
