@@ -102,3 +102,17 @@
 </body>
 
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('disclaimerModal');
+        const acceptBtn = document.getElementById('acceptDisclaimer');
+
+        // Show the modal when the page loads
+        modal.classList.add('show');
+
+        // Hide the modal when the user clicks "I Understand"
+        acceptBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+    });
+</script>
