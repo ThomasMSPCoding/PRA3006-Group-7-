@@ -636,3 +636,14 @@ main {
     margin-bottom: 20px;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); 
 }
+
+/*These styles are for click animation in additional research html*/
+.clickable {
+    cursor: pointer;
+    color: #0066cc;
+    text-decoration: underline;
+}
+
+.clickable:hover {
+    color: #003366;
+}

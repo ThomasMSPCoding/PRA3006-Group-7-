@@ -59,5 +59,68 @@
 
     <!-- JavaScript section, this will made it possible to link SPARQL together with HTML, to represent the table -->
     <script src="query.js"></script>
+    <script>
+        /*This part of javascript is the function to hyperlink with the additional website research*/
+        function displayResults(result) {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = '<h2>SPARQL Query Results:</h2>';
+
+    if (result.results.bindings.length === 0) {
+        resultsDiv.innerHTML += '<p>No results found.</p>';
+        return;
+    }
+
+    // Create a table to display results
+    const table = document.createElement('table');
+    table.innerHTML = `
+        <tr>
+            <th>Disease</th>
+            <th>Symptoms</th>
+            <th>Treatments</th>
+            <th>Locations</th>
+        </tr>
+    `;
+
+    // Cancer type to URL mapping
+    const cancerUrls = {
+        'brain cancer': 'https://www.cancer.gov/types/brain',
+        'breast cancer': 'https://www.cancer.gov/types/breast',
+        'non-small-cell lung carcinoma': 'https://www.cancer.gov/types/lung',
+        'thyroid cancer': 'https://www.cancer.gov/types/thyroid',
+        'skin cancer': 'https://www.cancer.gov/types/skin',
+        'lymphoma': 'https://www.cancer.gov/types/lymphoma',
+        'liver cancer': 'https://www.cancer.gov/types/liver',
+        'kidney cancer': 'https://www.cancer.gov/types/kidney',
+        'pancreatic cancer': 'https://www.cancer.gov/types/pancreatic',
+        'colon cancer': 'https://www.cancer.gov/types/colorectal',
+        'endometrial carcinoma': 'https://www.cancer.gov/types/uterine',
+        'leukemia': 'https://www.cancer.gov/types/leukemia',
+        'prostate cancer': 'https://www.cancer.gov/types/prostate'
+    };
+
+    result.results.bindings.forEach((binding) => {
+        const disease = binding.diseaseLabel?.value || "N/A";
+        const symptoms = binding.symptoms?.value || "N/A";
+        const treatments = binding.treatments?.value || "N/A";
+        const locations = binding.locations?.value || "N/A";
+
+        const row = document.createElement('tr');
+        const diseaseLower = disease.toLowerCase();
+        
+        // Make the disease cell clickable if URL exists
+        const diseaseCell = `<td ${cancerUrls[diseaseLower] ? `class="clickable" onclick="window.open('${cancerUrls[diseaseLower]}', '_blank')"` : ''}>${disease}</td>`;
+        
+        row.innerHTML = `
+            ${diseaseCell}
+            <td>${symptoms}</td>
+            <td>${treatments}</td>
+            <td>${locations}</td>
+        `;
+        table.appendChild(row);
+    });
+
+    resultsDiv.appendChild(table);
+}
+    </script>
 </body>
 </html>
