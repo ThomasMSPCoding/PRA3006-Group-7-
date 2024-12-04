@@ -1,53 +1,47 @@
-//function showinfo(bodyPart) {
-  //  let info = "Information about" + bodyPart;
-    //alert(info+"\n\nRead More");
-    
-//}
-
 document.addEventListener("DOMContentLoaded", () => {
-    // Select all <area> elements
     const areas = document.querySelectorAll("map[name='image-map'] area");
 
-    // Create an info box
+    // Create an info box for hover interaction
     const infoBox = document.createElement("div");
-    infoBox.style.position = "absolute";
-    infoBox.style.padding = "10px";
-    infoBox.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
-    infoBox.style.border = "1px solid #ccc";
-    infoBox.style.borderRadius = "5px";
-    infoBox.style.boxShadow = "0px 4px 6px rgba(0, 0, 0, 0.1)";
-    infoBox.style.display = "none"; // Hidden by default
-    infoBox.style.zIndex = "1000";
+    infoBox.className = "info-box";
     document.body.appendChild(infoBox);
 
-    // Add event listeners to areas
     areas.forEach((area) => {
-        area.addEventListener("click", (event) => {
-            event.preventDefault(); // Prevent navigation
-
-            // Get the data-info attribute
-            const info = area.getAttribute("data-info");
-
-            if (info) {
-                // Get the mouse position
-                const mouseX = event.pageX;
-                const mouseY = event.pageY;
-
-                // Position the info box near the click
-                infoBox.style.left = `${mouseX + 10}px`;
-                infoBox.style.top = `${mouseY + 10}px`;
-
-                // Set the content and display the box
-                infoBox.textContent = info;
+        area.addEventListener("mouseenter", (event) => {
+            const title = area.getAttribute("title");
+            if (title) {
+                infoBox.textContent = title;
                 infoBox.style.display = "block";
+                infoBox.style.left = `${event.pageX + 10}px`;
+                infoBox.style.top = `${event.pageY + 10}px`;
             }
         });
-    });
 
-    // Hide the info box when clicking outside
-    document.addEventListener("click", (event) => {
-        if (!event.target.closest("area")) {
+        area.addEventListener("mousemove", (event) => {
+            infoBox.style.left = `${event.pageX + 10}px`;
+            infoBox.style.top = `${event.pageY + 10}px`;
+        });
+
+        area.addEventListener("mouseleave", () => {
             infoBox.style.display = "none";
-        }
+        });
     });
 });
+// JavaScript for Page Bar
+const totalIndicators = 13;
+const indicators = document.querySelectorAll('.page-indicator');
+
+// Function to update active indicator
+function updateActiveIndicator(index) {
+    indicators.forEach((indicator, i) => {
+        if (i === index) {
+            indicator.classList.add('active');
+        } else {
+            indicator.classList.remove('active');
+        }
+    });
+}
+
+// Example: Activate the first indicator by default
+let currentIndex = 0; // Example index
+updateActiveIndicator(currentIndex);
