@@ -19,5 +19,5 @@ SELECT ?symptom ?symptomLabel ?article WHERE {
     }
 } 
 To do for this: 
-{wd:Q3480107} to be exchanged with symptomsQ data from original query
+{wd:Q3480107} to be exchanged with symptomsQ data from original query (store symptomsQ like others, not added to table, put in the query like the cancer names of the first one)
 add as table to additional info page, with symptomLabel and article - going to be a table with just two columns, symptom and link to wikipedia page 
