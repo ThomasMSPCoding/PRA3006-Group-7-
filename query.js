@@ -63,12 +63,16 @@ class SPARQLQueryDispatcher {
   
   // Execute the query and display the results
   queryDispatcher.query(sparqlQuery)
-    .then((result) => {
-        displayResults(result);
-    })
-    .catch((error) => {
-        console.error("Error fetching data:", error);
+  .then((result) => {
+    // Store symptomsQ data for each disease
+    result.results.bindings.forEach((binding) => {
+      binding.symptomsQ = { value: binding.symptomsQ?.value || "" };
     });
+    displayResults(result);
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
   
   // Function to display results on the HTML page
   function displayResults(result) {
@@ -109,4 +113,102 @@ class SPARQLQueryDispatcher {
   
     resultsDiv.appendChild(table);
   }
+
+
+/*Second query */
+
+function getSymptomQuery(symptomsQ) {
+    const formattedSymptoms = symptomsQ.split(', ').map(s => `wd:${s}`).join(' ');
+    return `
+      SELECT ?symptom ?symptomLabel ?article 
+      WHERE {
+        VALUES ?symptom {${formattedSymptoms}}
+        ?symptom rdfs:label ?symptomLabel 
+        FILTER(LANG(?symptomLabel) = "en")
+        OPTIONAL {
+          ?article schema:about ?symptom .
+          ?article schema:inLanguage "en" .
+          FILTER (SUBSTR(str(?article), 1, 25) = "https://en.wikipedia.org/")
+        }
+      }
+    `;
+  }
+
+  function displayResults(result) {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = '<h2>SPARQL Query Results:</h2>';
   
+    if (result.results.bindings.length === 0) {
+      resultsDiv.innerHTML += '<p>No results found.</p>';
+      return;
+    }
+  
+    // Create the main table
+    const mainTable = document.createElement('table');
+    mainTable.innerHTML = `
+      <tr>
+        <th>Disease</th>
+        <th>Symptoms</th>
+        <th>Treatments</th>
+        <th>Locations</th>
+      </tr>
+    `;
+  
+    result.results.bindings.forEach((binding) => {
+      const disease = binding.diseaseLabel?.value || "N/A";
+      const symptoms = binding.symptoms?.value || "N/A";
+      const treatments = binding.treatments?.value || "N/A";
+      const locations = binding.locations?.value || "N/A";
+      const symptomsQ = binding.symptomsQ?.value || "";
+  
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${disease}</td>
+        <td>${symptoms}</td>
+        <td>${treatments}</td>
+        <td>${locations}</td>
+      `;
+      mainTable.appendChild(row);
+  
+      // Generate and execute the second query for each disease
+      const symptomQuery = getSymptomQuery(symptomsQ);
+      queryDispatcher.query(symptomQuery)
+        .then((symptomResult) => {
+          displaySymptomResults(disease, symptomResult);
+        })
+        .catch((error) => {
+          console.error(`Error fetching symptom data for ${disease}:`, error);
+        });
+    });
+  
+    resultsDiv.appendChild(mainTable);
+  }
+  
+  function displaySymptomResults(disease, result) {
+    const resultsDiv = document.getElementById('results');
+    
+    const symptomTable = document.createElement('table');
+    symptomTable.innerHTML = `
+      <tr>
+        <th colspan="2">${disease} Symptoms</th>
+      </tr>
+      <tr>
+        <th>Symptom</th>
+        <th>Wikipedia Link</th>
+      </tr>
+    `;
+  
+    result.results.bindings.forEach((binding) => {
+      const symptom = binding.symptomLabel?.value || "N/A";
+      const article = binding.article?.value || "#";
+  
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${symptom}</td>
+        <td><a href="${article}" target="_blank">Wikipedia</a></td>
+      `;
+      symptomTable.appendChild(row);
+    });
+  
+    resultsDiv.appendChild(symptomTable);
+  }
