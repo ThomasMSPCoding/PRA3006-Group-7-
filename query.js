@@ -32,6 +32,7 @@ class SPARQLQueryDispatcher {
     const formattedValue = cancerNames.map((name) => `wd:Q${name}`);
     const sparqlQuery = `
         SELECT DISTINCT ?disease ?diseaseLabel 
+        (GROUP_CONCAT(DISTINCT (STRAFTER(STR(?symptom), "/entity/")); separator=", ") AS ?symptomsQ) 
         (GROUP_CONCAT(DISTINCT ?symptomLabel; separator=", ") AS ?symptoms) 
         (GROUP_CONCAT(DISTINCT ?treatmentLabel; separator=", ") AS ?treatments) 
         (GROUP_CONCAT(DISTINCT ?locationLabel; separator=", ") AS ?locations)
