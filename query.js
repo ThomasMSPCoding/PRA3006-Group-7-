@@ -138,9 +138,6 @@ queryDispatcher.query(sparqlQuery)
     });
             // Pass the processed results to the displayResults function
     displayResults(result);
-
-    // Execute the second query for symptoms
-    executeSecondQuery(result);
 })
 .catch((error) => {
     // Log an error to the console if the first query fails
@@ -216,21 +213,6 @@ function executeSecondQuery(result) {
             console.error("Error fetching symptoms data:", error); // Handle errors during the second query
         });
 }
-
-// Construct second query
-const symptomQuery = getSymptomQuery(symptomsQ); 
-// Generate the SPARQL query for detailed symptom data using the list of symptom IDs (symptomsQ).
-
-// Execute the second SPARQL query
-queryDispatcher.query(symptomQuery)
-    .then(secondResult => {
-        // If the query is successful, call displaySymptomResults to handle and display the results
-        displaySymptomResults(secondResult);
-    })
-    .catch(error => {
-        // Log an error message if the query fails (e.g., network issues or invalid query)
-        console.error("Error fetching data for symptoms:", error);
-    });
 
 /**
  * Displays the results of the SPARQL query on the HTML page.
