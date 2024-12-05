@@ -111,7 +111,18 @@
             // Map cancer types to URLs for more information
             const cancerUrls = {
                 'brain cancer': 'https://www.cancer.gov/types/brain',
-                // Add other mappings here
+                'breast cancer': 'https://www.cancer.gov/types/breast',
+                'non-small-cell lung carcinoma': 'https://www.cancer.gov/types/lung',
+                'thyroid cancer': 'https://www.cancer.gov/types/thyroid',
+                'skin cancer': 'https://www.cancer.gov/types/skin',
+                'lymphoma': 'https://www.cancer.gov/types/lymphoma',
+                'liver cancer': 'https://www.cancer.gov/types/liver',
+                'kidney cancer': 'https://www.cancer.gov/types/kidney',
+                'pancreatic cancer': 'https://www.cancer.gov/types/pancreatic',
+                'colon cancer': 'https://www.cancer.gov/types/colorectal',
+                'endometrial carcinoma': 'https://www.cancer.gov/types/uterine',
+                'leukemia': 'https://www.cancer.gov/types/leukemia',
+                'prostate cancer': 'https://www.cancer.gov/types/prostate'
             };
 
             result.results.bindings.forEach((binding) => {
@@ -124,7 +135,8 @@
                 const diseaseLower = disease.toLowerCase();
 
                 // Make the disease cell clickable if a URL exists
-                const diseaseCell = `<td ${cancerUrls[diseaseLower] ? `class="clickable" onclick="window.open('${cancerUrls[diseaseLower]}', '_blank')"` : ''}>${disease}</td>`;
+                const diseaseCell = `<td ${cancerUrls[diseaseLower] ? `class="clickable" 
+                onclick="window.open('${cancerUrls[diseaseLower]}', '_blank')"` : ''}>${disease}</td>`;
 
                 row.innerHTML = `
                     ${diseaseCell}
