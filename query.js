@@ -71,13 +71,13 @@ queryDispatcher.query(sparqlQuery)
     displayResults(result);
 
     // Execute the second query for symptoms
-    executeSecondQuery(result); // Trigger the second query
+    executeSecondQuery(result);
 })
 .catch((error) => {
     console.error("Error fetching data:", error);
 });
   
-/* Second query - Get symptoms from the first query's results */
+// Second query - Get symptoms from the first query's results
 function getSymptomQuery(symptomsQN) {
   const formattedSymptoms = symptomsQN.map(symptom => `wd:${symptom}`).join(' ');
   return `
@@ -132,7 +132,7 @@ function executeSecondQuery(result) {
         return;
     }
   
-    // Create first table to display results
+    // Create first table
     const table = document.createElement('table');
     table.innerHTML = `
         <tr>
