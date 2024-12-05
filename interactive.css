@@ -27,10 +27,14 @@ body::before {
 /* Main Container Styling */
 .main-container {
     position: relative;
-    z-index: 1; /* Content above background */
+    z-index: 1;
     padding: 50px 20px;
-    min-height: 200vh; /* Double the page height */
+    min-height: calc(100vh - 120px); /* Adjust the height to account for the header and footer height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push content and footer to their respective positions */
 }
+
 
 /* Navigation Bar */
 header {
@@ -364,3 +368,4 @@ area:hover {
 .organ-image.active {
     display: block;
 }
+
