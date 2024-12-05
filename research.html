@@ -70,7 +70,7 @@
         return;
     }
 
-    // Create a table to display results
+    // Create first table to display results of query 1
     const table = document.createElement('table');
     table.innerHTML = `
         <tr>
@@ -120,6 +120,31 @@
     });
 
     resultsDiv.appendChild(table);
+    
+    // Create second table for symptom links (query 2)
+const table2 = document.createElement('table');
+table2.innerHTML = `
+    <tr>
+        <th>Symptom</th>
+        <th>Wikipedia Link</th>
+    </tr>
+`;
+
+// Iterate over the results from the second SPARQL query (symptoms data)
+result.results.bindings.forEach((binding) => {
+    const symptom = binding.symptomLabel?.value || "N/A";
+    const article = binding.article?.value || "#";
+
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>${symptom}</td>
+        <td><a href="${article}" target="_blank">Wikipedia</a></td>
+    `;
+    table2.appendChild(row);
+});
+
+// Append the second table below the first
+resultsDiv.appendChild(table2);
 }
     </script>
 </body>
