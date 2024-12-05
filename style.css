@@ -1,4 +1,4 @@
-/* General */
+/* General body styling */
 body {
     margin: 0;
     font-family: 'TT Hoves', Arial, sans-serif;
@@ -7,7 +7,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Container for Main */
+/* Container for Main --> Is the background of the webpage */
 .main-container {
     background-image: url('img/background.jpg'); 
     background-size: cover;
@@ -16,7 +16,7 @@ body {
     position: relative;
     overflow: hidden;
 }
-
+/*Set a overlay effect on the background with a semi-transparent dark overlay*/
 .main-container::before {
     content: '';
     position: absolute;
@@ -28,18 +28,18 @@ body {
     z-index: 1; 
     pointer-events: none; 
 }
-
+/*This is the content layer, ensures that all child elements sits above the overlay*/
 .main-container > * {
     position: relative;
     z-index: 2; 
 }
 
-/* Navigation Bar */
+/* Navigation Bar -->Is the styles for the header*/
 header {
     padding: 40px 40px;
     background: transparent;
 }
-
+/*Navigation bar main style */
 .nav-links {
     list-style: none;
     display: flex;
@@ -48,12 +48,12 @@ header {
     margin: 0;
     padding: 0;
 }
-
+/*Style for left and right */
 .nav-left, .nav-right {
     display: flex;
     gap: 120px;
 }
-
+/*Style for individual links */
 .nav-link {
     text-decoration: none;
     color: white;
@@ -61,11 +61,11 @@ header {
     font-size: 1.2rem; /* Rem=Relative to font-size of the root element*/
     transition: all 0.3s ease;
 }
-
+/*The hover effect(means transition effect) */
 .nav-link:hover {
     text-shadow: 0 0 10px white;
 }
-
+/*Logo container style */
 .logo {
     display: flex;
     justify-content: center;
@@ -74,7 +74,7 @@ header {
     margin-right: auto;
     position: relative;
 }
-
+/*Image style of logo */
 .logo img {
     width: 300px; 
     height: auto;
@@ -82,7 +82,7 @@ header {
     margin-left: 45px;
 }
 
-/* Main Section */
+/* Main Section --> styles for the main container */
 main {
     display: flex;
     flex-direction: column;
@@ -91,7 +91,7 @@ main {
     text-align: center;
     height: calc(65vh); /*Relative to 1% of the height of the viewport**/
 }
-
+/*Sytles on the index webpage upper part*/
 .main-title {
     font-size: 4rem;
     font-weight: 300; 
@@ -194,6 +194,7 @@ footer {
     text-align: center; 
 }
 
+/*This is the animation for the button with floatDown*/
 @keyframes floatDown {
     from {
         transform: translateY(-100px);
@@ -211,6 +212,7 @@ header {
     animation: floatDown 1s ease-out;
 }
 
+/*Animation for the fade in section of interaction and additional info*/
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -221,7 +223,6 @@ header {
         transform: scale(1);
     }
 }
-
 main {
     display: flex;
     flex-direction: column;
