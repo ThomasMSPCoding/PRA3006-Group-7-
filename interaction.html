@@ -5,82 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OncoMap - Interactive Body</title>
     <link rel="stylesheet" href="interactive.css">
-    <style>
-        /* General Body Styles */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: white;
-            background-color: #1a1a1a;
-        }
-
-        .bodymap-section {
-            text-align: center;
-            padding: 60px 20px;
-            margin: 40px auto;
-        }
-
-        /* Image Container */
-        .image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .organ-image {
-            display: none;
-            max-width: 100%;
-            height: auto;
-        }
-
-        .organ-image.active {
-            display: block;
-        }
-
-        /* Navigation Buttons */
-        .button-container {
-            margin-top: 20px;
-        }
-
-        .nav-button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            font-size: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .nav-button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Page Bar */
-        .page-bar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .page-indicator {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background-color: #ddd;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .page-indicator.active {
-            background-color: #007bff;
-            transform: scale(1.2);
-        }
-    </style>
+  
 </head>
 <body>
     <!-- Disclaimer Modal -->
@@ -126,12 +51,13 @@
                 <hr />
                 <p>
                   Hover over the highlighted areas of the human body to explore and learn more about various types of cancer.
-              </p>
-              
-  </style>
+              </p>    
 </head>
 <body>
+  <!-- Main container for the SVG graphic -->
   <div class="svg-container">
+    <!-- The 'svg-container' class is likely used for styling the container that holds the SVG. -->
+
     <svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -139,9 +65,22 @@
       viewBox="0 0 1920 1187"
       id="interactive-body"
     >
+      <!-- This is the root element for scalable vector graphics (SVG).
+           It defines an interactive body illustration or graphic. -->
+
+      <!-- Attributes: -->
+      <!-- 'version="1.1"' specifies the version of the SVG standard being used. -->
+      <!-- 'xmlns' and 'xmlns:xlink' define namespaces for the SVG elements. 
+           - 'xmlns="http://www.w3.org/2000/svg"' is the main namespace for SVG elements.
+           - 'xmlns:xlink="http://www.w3.org/1999/xlink"' is used for linking resources within the SVG. -->
+      <!-- 'viewBox="0 0 1920 1187"' defines the coordinate system and dimensions of the SVG graphic.
+           - '0 0' represents the top-left corner of the SVG canvas.
+           - '1920 1187' sets the width and height of the canvas in the SVG coordinate space. -->
+      <!-- 'id="interactive-body"' uniquely identifies this SVG element, allowing scripts to target it. -->
+
       <!-- Base Image -->
       <image
-        id="body-image"
+        id="body-image" 
         width="1920"
         height="1187"
         xlink:href="BodyMapMale+Female.png"
@@ -575,10 +514,15 @@
   <script>
     // Function to change the background image
     function changeImage(newImage) {
-      const bodyImage = document.getElementById('body-image');
-      bodyImage.setAttribute('xlink:href', newImage);
+        const bodyImage = document.getElementById('body-image'); 
+        // Get the element with the ID 'body-image' (likely an <image> element in SVG or an <img> element in HTML)
+        
+        bodyImage.setAttribute('xlink:href', newImage); 
+        // Update the 'xlink:href' attribute of the selected element to the new image path
+        // 'xlink:href' is used specifically in SVG for referencing image paths
     }
-  </script>
+</script>
+
     <!-- Footer -->
     <footer class="footer-links">
       <div class="footer-nav">
@@ -589,174 +533,191 @@
   </footer>
 </div>
 
-   <!-- Additional Information Pop-ups -->
-   <div id="infoModal" class="modal">
-    <div class="modal-content">
-        <h2 id="modalTitle">Additional Info</h2>
-        <p id="modalDescription"> Description goes here
-        </p>
-        <button id="CloseData" class="accept-btn">Close</button>
-    </div>
+<!-- Additional Information Pop-ups -->
+<div id="infoModal" class="modal">
+  <!-- The outer container for the modal. 
+       It is hidden by default and shown when triggered by JavaScript -->
+  <div class="modal-content">
+      <!-- The inner content of the modal, styled separately -->
+      <h2 id="modalTitle">Additional Info</h2>
+      <!-- A heading element where the title of the modal appears. 
+           The content can be dynamically updated using JavaScript -->
+      <p id="modalDescription">
+          Description goes here
+          <!-- A paragraph to display the additional information or description.
+               The content can also be dynamically updated -->
+      </p>
+      <button id="CloseData" class="accept-btn">Close</button>
+      <!-- A button to close the modal. 
+           It is linked to a JavaScript function to hide the modal -->
+  </div>
 </div>
 
+
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const modal = document.getElementById('infoModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDescription = document.getElementById('modalDescription');
-        const closeBtn = document.getElementById('CloseData');
-      
-      // Function to show the modal
+  // Wait for the DOM to fully load before running the script
+  document.addEventListener('DOMContentLoaded', () => {
+      // Get references to the modal and its elements
+      const modal = document.getElementById('infoModal'); // The modal container
+      const modalTitle = document.getElementById('modalTitle'); // The modal title element
+      const modalDescription = document.getElementById('modalDescription'); // The modal description element
+      const closeBtn = document.getElementById('CloseData'); // The close button
+
+      // Function to show the modal with specific content
       const showModal = (title, description) => {
-        modalTitle.textContent = title;
-        modalDescription.textContent = description;
-        modal.style.visibility = 'visible';
-        modal.style.opacity = '1';
-    };
-  
+          modalTitle.textContent = title; // Set the modal title
+          modalDescription.textContent = description; // Set the modal description
+          modal.style.visibility = 'visible'; // Make the modal visible
+          modal.style.opacity = '1'; // Ensure the modal is fully opaque
+      };
+
       // Function to hide the modal
       const hideModal = () => {
-        modal.style.visibility = 'hidden';
-        modal.style.opacity = '0';
-    };
-  
-      // Show the modal when corresponding area is clicked
-      //MaleBodyparts
+          modal.style.visibility = 'hidden'; // Hide the modal
+          modal.style.opacity = '0'; // Make the modal fully transparent
+      };
+
+      // Add event listeners to body part elements (Male body parts)
       document.getElementById('BrainMale').addEventListener('click', () => {
-        showModal('Brain Cancer', 'Detailed information about brain cancer.');
-    });
-    document.getElementById('LymphnodeMale').addEventListener('click', () => {
-        showModal('Lymphoma', 'Detailed information about lymphoma.');
-    });
-    document.getElementById('SkinMale').addEventListener('click', () => {
-        showModal('Melanoma', 'Detailed information about melanoma.');
-    });
-    document.getElementById('ThyroidMale').addEventListener('click', () => {
-        showModal('Thyroid Cancer', 'Detailed information about thyroid cancer.');
-    });
-    document.getElementById('LungMaleLeft').addEventListener('click', () => {
-        showModal('Lung Cancer', 'Detailed information about lung cancer.');
-    });
-    document.getElementById('LungMaleRight').addEventListener('click', () => {
-        showModal('Lung Cancer', 'Detailed information about lung cancer.');
-    });
-    document.getElementById('LiverMale1').addEventListener('click', () => {
-        showModal('Liver Cancer', 'Detailed information about liver cancer.');
-    });
-    document.getElementById('LiverMale2').addEventListener('click', () => {
-        showModal('Liver Cancer', 'Detailed information about liver cancer.');
-    });
-    document.getElementById('KidneyMale').addEventListener('click', () => {
-        showModal('Kidney Cancer', 'Detailed information about kidney cancer.');
-    });
-    document.getElementById('PancreasMale').addEventListener('click', () => {
-        showModal('Pancreatic Cancer', 'Detailed information about pancreatic cancer.');
-    });
-    document.getElementById('VeinsMale').addEventListener('click', () => {
-        showModal('Leukemia', 'Detailed information about leukemia.');
-    });
-    document.getElementById('IntestinesMale').addEventListener('click', () => {
-        showModal('Colon Cancer', 'Detailed information about colon cancer.');
-    });
-    document.getElementById('Prostate').addEventListener('click', () => {
-        showModal('Prostate Cancer', 'Detailed information about prostate cancer.');
-    });
-    //FemaleBodyparts
-    document.getElementById('BrainFemale').addEventListener('click', () => {
-        showModal('Brain Cancer', 'Detailed information about brain cancer.');
-    });
-    document.getElementById('ThyroidFemale').addEventListener('click', () => {
-        showModal('Thyroid Cancer', 'Detailed information about thyroid cancer.');
-    });
-    document.getElementById('SkinFemale').addEventListener('click', () => {
-        showModal('Melanoma', 'Detailed information about melanoma.');
-    });
-    document.getElementById('VeinsFemale').addEventListener('click', () => {
-        showModal('Leukemia', 'Detailed information about leukemia.');
-    });
-    document.getElementById('Uterus').addEventListener('click', () => {
-        showModal('Endometrial Cancer', 'Detailed information about endometrial cancer.');
-    });
-    document.getElementById('LungFemaleLeft').addEventListener('click', () => {
-        showModal('Lung Cancer', 'Detailed information about lung cancer.');
-    });
-    document.getElementById('LungFemaleRight').addEventListener('click', () => {
-        showModal('Lung Cancer', 'Detailed information about lung cancer.');
-    });
-    document.getElementById('Breast').addEventListener('click', () => {
-        showModal('Breast Cancer', 'Detailed information about liver cancer.');
-    });
-    document.getElementById('LiverFemale1').addEventListener('click', () => {
-        showModal('Liver Cancer', 'Detailed information about liver cancer.');
-    });
-    document.getElementById('LiverFemale2').addEventListener('click', () => {
-        showModal('Liver Cancer', 'Detailed information about liver cancer.');
-    });
-    document.getElementById('LiverFemale3').addEventListener('click', () => {
-        showModal('Liver Cancer', 'Detailed information about liver cancer.');
-    });
-    document.getElementById('PancreasFemale').addEventListener('click', () => {
-        showModal('Pancreatic Cancer', 'Detailed information about pancreatic cancer.');
-    });
-    document.getElementById('KidneyFemale').addEventListener('click', () => {
-        showModal('Kidney Cancer', 'Detailed information about kidney cancer.');
-    });
-    document.getElementById('IntestinesFemale1').addEventListener('click', () => {
-        showModal('Colon Cancer', 'Detailed information about colon cancer.');
-    });
-    document.getElementById('IntestinesFemale2').addEventListener('click', () => {
-        showModal('Colon Cancer', 'Detailed information about colon cancer.');
-    });
-    document.getElementById('IntestinesFemale3').addEventListener('click', () => {
-        showModal('Colon Cancer', 'Detailed information about colon cancer.');
-    });
+          showModal('Brain Cancer', 'Detailed information about brain cancer.');
+      });
+      document.getElementById('LymphnodeMale').addEventListener('click', () => {
+          showModal('Lymphoma', 'Detailed information about lymphoma.');
+      });
+      document.getElementById('SkinMale').addEventListener('click', () => {
+          showModal('Melanoma', 'Detailed information about melanoma.');
+      });
+      document.getElementById('ThyroidMale').addEventListener('click', () => {
+          showModal('Thyroid Cancer', 'Detailed information about thyroid cancer.');
+      });
+      document.getElementById('LungMaleLeft').addEventListener('click', () => {
+          showModal('Lung Cancer', 'Detailed information about lung cancer.');
+      });
+      document.getElementById('LungMaleRight').addEventListener('click', () => {
+          showModal('Lung Cancer', 'Detailed information about lung cancer.');
+      });
+      document.getElementById('LiverMale1').addEventListener('click', () => {
+          showModal('Liver Cancer', 'Detailed information about liver cancer.');
+      });
+      document.getElementById('LiverMale2').addEventListener('click', () => {
+          showModal('Liver Cancer', 'Detailed information about liver cancer.');
+      });
+      document.getElementById('KidneyMale').addEventListener('click', () => {
+          showModal('Kidney Cancer', 'Detailed information about kidney cancer.');
+      });
+      document.getElementById('PancreasMale').addEventListener('click', () => {
+          showModal('Pancreatic Cancer', 'Detailed information about pancreatic cancer.');
+      });
+      document.getElementById('VeinsMale').addEventListener('click', () => {
+          showModal('Leukemia', 'Detailed information about leukemia.');
+      });
+      document.getElementById('IntestinesMale').addEventListener('click', () => {
+          showModal('Colon Cancer', 'Detailed information about colon cancer.');
+      });
+      document.getElementById('Prostate').addEventListener('click', () => {
+          showModal('Prostate Cancer', 'Detailed information about prostate cancer.');
+      });
+
+      // Add event listeners to body part elements (Female body parts)
+      document.getElementById('BrainFemale').addEventListener('click', () => {
+          showModal('Brain Cancer', 'Detailed information about brain cancer.');
+      });
+      document.getElementById('ThyroidFemale').addEventListener('click', () => {
+          showModal('Thyroid Cancer', 'Detailed information about thyroid cancer.');
+      });
+      document.getElementById('SkinFemale').addEventListener('click', () => {
+          showModal('Melanoma', 'Detailed information about melanoma.');
+      });
+      document.getElementById('VeinsFemale').addEventListener('click', () => {
+          showModal('Leukemia', 'Detailed information about leukemia.');
+      });
+      document.getElementById('Uterus').addEventListener('click', () => {
+          showModal('Endometrial Cancer', 'Detailed information about endometrial cancer.');
+      });
+      document.getElementById('LungFemaleLeft').addEventListener('click', () => {
+          showModal('Lung Cancer', 'Detailed information about lung cancer.');
+      });
+      document.getElementById('LungFemaleRight').addEventListener('click', () => {
+          showModal('Lung Cancer', 'Detailed information about lung cancer.');
+      });
+      document.getElementById('Breast').addEventListener('click', () => {
+          showModal('Breast Cancer', 'Detailed information about breast cancer.');
+      });
+      document.getElementById('LiverFemale1').addEventListener('click', () => {
+          showModal('Liver Cancer', 'Detailed information about liver cancer.');
+      });
+      document.getElementById('LiverFemale2').addEventListener('click', () => {
+          showModal('Liver Cancer', 'Detailed information about liver cancer.');
+      });
+      document.getElementById('LiverFemale3').addEventListener('click', () => {
+          showModal('Liver Cancer', 'Detailed information about liver cancer.');
+      });
+      document.getElementById('PancreasFemale').addEventListener('click', () => {
+          showModal('Pancreatic Cancer', 'Detailed information about pancreatic cancer.');
+      });
+      document.getElementById('KidneyFemale').addEventListener('click', () => {
+          showModal('Kidney Cancer', 'Detailed information about kidney cancer.');
+      });
+      document.getElementById('IntestinesFemale1').addEventListener('click', () => {
+          showModal('Colon Cancer', 'Detailed information about colon cancer.');
+      });
+      document.getElementById('IntestinesFemale2').addEventListener('click', () => {
+          showModal('Colon Cancer', 'Detailed information about colon cancer.');
+      });
+      document.getElementById('IntestinesFemale3').addEventListener('click', () => {
+          showModal('Colon Cancer', 'Detailed information about colon cancer.');
+      });
       document.getElementById('LymphnodeFemale').addEventListener('click', () => {
-        showModal('Lymphoma', 'Detailed information about lymphoma.');
-    });
-  
-      // Hide the modal when the "Close" button is clicked
+          showModal('Lymphoma', 'Detailed information about lymphoma.');
+      });
+
+      // Close the modal when the "Close" button is clicked
       closeBtn.addEventListener('click', hideModal);
 
-      //Hide when clicked outside of window 
+      // Close the modal when clicking outside its content
       window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            hideModal();
-        }
-    });
-});
-  </script>
+          if (event.target === modal) {
+              hideModal();
+          }
+      });
+  });
+</script>
 
-<!--disclaimer script-->
+
+<!-- Disclaimer Script -->
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const modal = document.getElementById('disclaimerModal');
-      const acceptBtn = document.getElementById('acceptDisclaimer');
-      const disclaimerLink = document.getElementById('disclaimer-link');
-      
+  // Wait for the entire DOM to load before executing the script
+  document.addEventListener('DOMContentLoaded', () => {
+      // Get references to elements in the DOM
+      const modal = document.getElementById('disclaimerModal'); // The modal container for the disclaimer
+      const acceptBtn = document.getElementById('acceptDisclaimer'); // The "I Understand" button
+      const disclaimerLink = document.getElementById('disclaimer-link'); // The "DISCLAIMER" link
+
       // Function to show the modal
       const showModal = () => {
-        modal.style.visibility = 'visible';
-        modal.style.opacity = '1';
+          modal.style.visibility = 'visible'; // Makes the modal visible
+          modal.style.opacity = '1'; // Ensures the modal is fully opaque
       };
-  
+
       // Function to hide the modal
       const hideModal = () => {
-        modal.style.visibility = 'hidden';
-        modal.style.opacity = '0';
+          modal.style.visibility = 'hidden'; // Hides the modal
+          modal.style.opacity = '0'; // Makes the modal fully transparent
       };
-  
-      // Show the modal when the page loads
+
+      // Automatically show the modal when the page loads
       showModal();
-  
+
       // Show the modal when the "DISCLAIMER" link is clicked
       disclaimerLink.addEventListener('click', () => {
-        showModal();
+          showModal(); // Call the showModal function to display the modal
       });
-  
+
       // Hide the modal when the "I Understand" button is clicked
-      acceptBtn.addEventListener('click', hideModal);
-    });
-  </script>
+      acceptBtn.addEventListener('click', hideModal); // Call the hideModal function to close the modal
+  });
+</script>
+
   
 </body>
 </html>
