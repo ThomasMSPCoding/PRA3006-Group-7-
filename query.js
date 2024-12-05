@@ -130,8 +130,8 @@ queryDispatcher.query(sparqlQuery)
             // Pass the processed results to the displayResults function
     displayResults(result);
 
-// Execute the second query for symptoms
-executeSecondQuery(result); // Trigger the second query using the results from the first query
+    // Execute the second query for symptoms
+    executeSecondQuery(result);
 })
 .catch((error) => {
     // Log an error to the console if the first query fails

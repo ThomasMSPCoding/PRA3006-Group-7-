@@ -177,6 +177,7 @@ function executeQueries() {
                     // Collect symptomsQ and execute the second query
                     const symptomsQList = result.results.bindings
                         .map(binding => binding.symptomsQ?.value || "")
+                        .filter(symptomQ => symptomQ !== "")
                         .flatMap(symptomsQ => symptomsQ.split(", ").map(s => s.trim()))
                         .filter((symptom, index, self) => self.indexOf(symptom) === index);
 
