@@ -45,3 +45,51 @@ function updateActiveIndicator(index) {
 // Example: Activate the first indicator by default
 let currentIndex = 0; // Example index
 updateActiveIndicator(currentIndex);
+
+// JavaScript for Image Switching and Page Bar
+const totalImages = 13; // Total number of images
+let currentIndex = 0; // Start with the first image
+
+// Get all image elements and page indicators
+const images = document.querySelectorAll(".organ-image");
+const indicators = document.querySelectorAll(".page-indicator");
+
+// Function to update the displayed image and active indicator
+function updateDisplay() {
+    // Show only the current image
+    images.forEach((img, index) => {
+        if (index === currentIndex) {
+            img.classList.add("active");
+        } else {
+            img.classList.remove("active");
+        }
+    });
+
+    // Highlight the active page indicator
+    indicators.forEach((indicator, index) => {
+        if (index === currentIndex) {
+            indicator.classList.add("active");
+        } else {
+            indicator.classList.remove("active");
+        }
+    });
+}
+
+// Function to go to the next image
+function nextOrgan() {
+    currentIndex = (currentIndex + 1) % totalImages; // Wrap around to the start
+    updateDisplay();
+}
+
+// Function to go to the previous image
+function prevOrgan() {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages; // Wrap around to the end
+    updateDisplay();
+}
+
+// Add event listeners to buttons
+document.getElementById("next-button").addEventListener("click", nextOrgan);
+document.getElementById("prev-button").addEventListener("click", prevOrgan);
+
+// Initialize display
+updateDisplay();

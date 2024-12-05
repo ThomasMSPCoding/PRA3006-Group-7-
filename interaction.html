@@ -3,24 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OncoMap - Interactive Body</title>
+    <title>Interactive Body Map</title>
     <link rel="stylesheet" href="interactive.css">
+    <style>
+        /* General Body Styles */
+        body {
+            margin: 0;
+            font-family: 'TT Hoves', Arial, sans-serif;
+            color: white;
+            background-image: url('img/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(7, 8, 45, 0.5);
+            z-index: 0;
+        }
+
+        .main-container {
+            z-index: 1;
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* Navigation Bar */
+        header {
+            padding: 20px 40px;
+            background: transparent;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            gap: 50px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            text-shadow: 0 0 10px white;
+        }
+
+        .logo img {
+            width: 200px;
+            height: auto;
+            margin: auto;
+        }
+
+        /* SVG Container */
+        .svg-container {
+            margin: 50px auto;
+            width: 50%; /* Adjust this percentage to change the image size */
+            max-height: 80vh; /* Ensure it scales within the viewport height */
+            aspect-ratio: 1920 / 1187; /* Maintain the original aspect ratio of the image */
+        }
+
+        svg {
+            width: 100%; /* Scale the SVG to fit the container */
+            height: auto; /* Maintain aspect ratio */
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(7, 8, 45, 0.8);
+            padding: 20px 30px;
+            color: white;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: lightgray;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+    </style>
 </head>
 <body>
-    <!-- Disclaimer Modal -->
-    <div id="disclaimerModal" class="modal">
-        <div class="modal-content">
-            <h2>Important Disclaimer</h2>
-            <p>
-                This website is a project and is not intended for medical use. If you are experiencing any
-                symptoms or have concerns, we strongly encourage you to consult a qualified medical professional.
-                Your health and well-being are our utmost priority.
-            </p>
-            <button id="acceptDisclaimer" class="accept-btn">I Understand</button>
-        </div>
-    </div>
-
-    <!-- Main Container -->
     <div class="main-container">
         <!-- Navigation Bar -->
         <header>
@@ -37,75 +143,35 @@
                     </div>
                     <div class="nav-right">
                         <li><a href="research.html" class="nav-link">ADDITIONAL INFO</a></li>
-                        <li><a href="Source.html" class="nav-link">SOURCES</a></li>
+                        <li><a href="source.html" class="nav-link">SOURCES</a></li>
                     </div>
                 </ul>
             </nav>
         </header>
 
-        <!-- Body Map Section -->
-        <main>
-            <section class="bodymap-section">
-                <h1>Explore the Human Body</h1>
-                <hr />
-                <p>
-                    Click the buttons below to explore different highlighted areas of the human body and learn more about
-                    various types of cancer.
-                </p>
-                <div class="image-container">
-                    <img id="organ-image" src="img/BodyMapMale+Female.png" alt="Interactive Human Body Map">
-                </div>
-                <!-- Navigation Buttons -->
-                <div class="button-container">
-                    <button class="nav-button" id="prev-button">Previous</button>
-                    <button class="nav-button" id="next-button">Next</button>
-                </div>
-                <!-- Page Bar -->
-<div class="page-bar">
-    <!-- 13 Circle Indicators -->
-    <div class="page-indicator" id="indicator-1"></div>
-    <div class="page-indicator" id="indicator-2"></div>
-    <div class="page-indicator" id="indicator-3"></div>
-    <div class="page-indicator" id="indicator-4"></div>
-    <div class="page-indicator" id="indicator-5"></div>
-    <div class="page-indicator" id="indicator-6"></div>
-    <div class="page-indicator" id="indicator-7"></div>
-    <div class="page-indicator" id="indicator-8"></div>
-    <div class="page-indicator" id="indicator-9"></div>
-    <div class="page-indicator" id="indicator-10"></div>
-    <div class="page-indicator" id="indicator-11"></div>
-    <div class="page-indicator" id="indicator-12"></div>
-    <div class="page-indicator" id="indicator-13"></div>
-</div>
-            </section>
-        </main>
+        <!-- SVG Container -->
+        <div class="svg-container">
+            <!-- Add your SVG content here -->
+        </div>
 
         <!-- Footer -->
-        <footer class="footer-links">
+        <footer>
             <div class="footer-nav">
-                <a href="Source.html" class="footer-link">Contact Us</a>
-                <a href="#" class="footer-link">Copy Right</a>
+                <a href="source.html" class="footer-link">Contact Us</a>
+                <a href="#" class="footer-link">Copyright</a>
                 <a href="#" class="footer-link">Disclaimer</a>
                 <a href="#" class="footer-link">Privacy Policy</a>
             </div>
-            <p>© 2024 Programming in the Life Sciences Project Oncomap. All rights reserved</p>
+            <p class="footer-text">© 2024 Your Project. All rights reserved.</p>
         </footer>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('disclaimerModal');
-            const acceptBtn = document.getElementById('acceptDisclaimer');
-
-            // Show the modal when the page loads
-            modal.classList.add('show');
-
-            // Hide the modal when the user clicks "I Understand"
-            acceptBtn.addEventListener('click', () => {
-                modal.classList.remove('show');
-            });
-        });
+        // Function to handle SVG interactivity
+        function changeImage(newImage) {
+            const bodyImage = document.getElementById('body-image');
+            bodyImage.setAttribute('xlink:href', newImage);
+        }
     </script>
 </body>
 </html>
-
