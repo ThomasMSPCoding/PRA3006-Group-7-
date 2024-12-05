@@ -1,22 +1,25 @@
-/* General body styling */
+/* General */
 body {
     margin: 0;
+    padding: 0;
     font-family: 'TT Hoves', Arial, sans-serif;
     color: white;
-    position: relative;
-    overflow-x: hidden;
+    overflow-y: visible;
+    
 }
 
-/* Container for Main --> Is the background of the webpage */
+/* Container for Main */
 .main-container {
     background-image: url('img/background.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-    overflow: hidden;
+
+    
+    
 }
-/*Set a overlay effect on the background with a semi-transparent dark overlay*/
+
 .main-container::before {
     content: '';
     position: absolute;
@@ -28,18 +31,18 @@ body {
     z-index: 1; 
     pointer-events: none; 
 }
-/*This is the content layer, ensures that all child elements sits above the overlay*/
+
 .main-container > * {
     position: relative;
     z-index: 2; 
 }
 
-/* Navigation Bar -->Is the styles for the header*/
+/* Navigation Bar */
 header {
     padding: 40px 40px;
     background: transparent;
 }
-/*Navigation bar main style */
+
 .nav-links {
     list-style: none;
     display: flex;
@@ -48,12 +51,12 @@ header {
     margin: 0;
     padding: 0;
 }
-/*Style for left and right */
+
 .nav-left, .nav-right {
     display: flex;
     gap: 120px;
 }
-/*Style for individual links */
+
 .nav-link {
     text-decoration: none;
     color: white;
@@ -61,11 +64,11 @@ header {
     font-size: 1.2rem; /* Rem=Relative to font-size of the root element*/
     transition: all 0.3s ease;
 }
-/*The hover effect(means transition effect) */
+
 .nav-link:hover {
     text-shadow: 0 0 10px white;
 }
-/*Logo container style */
+
 .logo {
     display: flex;
     justify-content: center;
@@ -74,7 +77,7 @@ header {
     margin-right: auto;
     position: relative;
 }
-/*Image style of logo */
+
 .logo img {
     width: 300px; 
     height: auto;
@@ -82,7 +85,7 @@ header {
     margin-left: 45px;
 }
 
-/* Main Section --> styles for the main container */
+/* Main Section */
 main {
     display: flex;
     flex-direction: column;
@@ -91,7 +94,7 @@ main {
     text-align: center;
     height: calc(65vh); /*Relative to 1% of the height of the viewport**/
 }
-/*Sytles on the index webpage upper part*/
+
 .main-title {
     font-size: 4rem;
     font-weight: 300; 
@@ -145,7 +148,7 @@ footer {
     padding: 10px;
     font-size: 0.8rem;
     color: white;
-    margin-top: auto;
+    
 }
 
 /* Welcome Section Container */
@@ -194,7 +197,6 @@ footer {
     text-align: center; 
 }
 
-/*This is the animation for the button with floatDown*/
 @keyframes floatDown {
     from {
         transform: translateY(-100px);
@@ -212,7 +214,6 @@ header {
     animation: floatDown 1s ease-out;
 }
 
-/*Animation for the fade in section of interaction and additional info*/
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -223,13 +224,14 @@ header {
         transform: scale(1);
     }
 }
+
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: calc(65vh); 
+    min-height: calc(65vh); 
     animation: fadeIn 1.2s ease-in-out; 
 }
 
@@ -514,38 +516,30 @@ main {
 }
 
 
-.main-container {
-    background-image: url('img/background.jpg'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    overflow: hidden;
-}
 
-
-.main-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(7, 8, 45, 0.5); 
-    z-index: 1; 
-}
 
 /* Query Section */
 .query-section {
     text-align: center;
     padding: 40px 20px;
+    border: 100px;
     background-color: rgba(255, 255, 255, 0.95); 
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     margin: 60px auto;
-    max-width: 90%;
+    max-width: 95%;
     max-height:fit-content;
     overflow: scroll;
+}
+.query-section::-webkit-scrollbar{
+    width: 10px;
+}
+.query-section::-webkit-scrollbar-thumb{
+    background: #888;
+    border-radius: 5px;
+}
+.query-section::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 .query-section h1 {
@@ -555,11 +549,7 @@ main {
     margin-bottom: 10px;
 }
 
-.query-section hr {
-    width: 80px;
-    border: 1px solid rgba(7, 8, 45, 0.9);
-    margin: 20px auto;
-}
+
 
 .query-section p {
     font-size: 1.2rem;
@@ -569,8 +559,8 @@ main {
 
 /* Results Container */
 .results-container {
-    max-height: fit-content; 
-    overflow-y: auto; 
+    height: auto; 
+    overflow-y: visible; 
     border: 1px solid #ddd; 
     padding: 20px;
     background-color: #f8f8f8; 
@@ -582,8 +572,8 @@ main {
 .results-container table {
     width: 100%;
     border-collapse: collapse;
-    margin: 10px 0;
-    max-height:fit-content;
+    margin: 20px;
+    
 }
 
 .results-container th,
