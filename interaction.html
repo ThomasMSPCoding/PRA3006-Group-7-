@@ -593,7 +593,7 @@
    <div id="infoModal" class="modal">
     <div class="modal-content">
         <h2 id="modalTitle">Additional Info</h2>
-        <p id="modalDescription"> Description should go here
+        <p id="modalDescription"> Description goes here
         </p>
         <button id="CloseData" class="accept-btn">Close</button>
     </div>
@@ -749,8 +749,7 @@
       showModal();
   
       // Show the modal when the "DISCLAIMER" link is clicked
-      disclaimerLink.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent default anchor behavior
+      disclaimerLink.addEventListener('click', () => {
         showModal();
       });
   
