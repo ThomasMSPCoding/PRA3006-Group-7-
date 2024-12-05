@@ -62,49 +62,54 @@ class SPARQLQueryDispatcher {
   const queryDispatcher = new SPARQLQueryDispatcher(endpointUrl);
   
   // Execute the query and display the results
-  queryDispatcher.query(sparqlQuery)
-  .then((result) => {
+queryDispatcher.query(sparqlQuery)
+.then((result) => {
     // Store symptomsQ data for each disease
     result.results.bindings.forEach((binding) => {
-      binding.symptomsQ = { value: binding.symptomsQ?.value || "" };
+        binding.symptomsQ = { value: binding.symptomsQ?.value || "" };
     });
     displayResults(result);
-  })
-  .catch((error) => {
+
+    // Execute the second query for symptoms
+    executeSecondQuery(result); // Trigger the second query
+})
+.catch((error) => {
     console.error("Error fetching data:", error);
-  });
+});
   
 /* Second query - Get symptoms from the first query's results */
 function getSymptomQuery(symptomsQN) {
-  const formattedSymptoms = symptomsQN.split(', ').map(s => `wd:${s}`).join(' ');
+  const formattedSymptoms = symptomsQN.map(symptom => `wd:${symptom}`).join(' ');
   return `
-    SELECT ?symptom ?symptomLabel ?article 
-    WHERE {
-      VALUES ?symptom {${formattedSymptoms}}
-      ?symptom rdfs:label ?symptomLabel 
-      FILTER(LANG(?symptomLabel) = "en")
-      OPTIONAL {
-        ?article schema:about ?symptom .
-        ?article schema:inLanguage "en" .
-        FILTER (SUBSTR(str(?article), 1, 25) = "https://en.wikipedia.org/")
+      SELECT ?symptom ?symptomLabel ?article 
+      WHERE {
+          VALUES ?symptom {${formattedSymptoms}}
+          ?symptom rdfs:label ?symptomLabel 
+          FILTER(LANG(?symptomLabel) = "en")
+          OPTIONAL {
+              ?article schema:about ?symptom .
+              ?article schema:inLanguage "en" .
+              FILTER (SUBSTR(str(?article), 1, 25) = "https://en.wikipedia.org/")
+          }
       }
-    }
   `;
 }
 
 // Function to execute the second query
 function executeSecondQuery(result) {
   // Collect all symptomsQ values from the first query
-  const symptomsQ = result.results.bindings
+  const symptomsQList = result.results.bindings
       .map(binding => binding.symptomsQ?.value || "")
       .filter(symptomQ => symptomQ !== "") // Exclude empty values
-      .join(", ");
+      .flatMap(symptomQ => symptomQ.split(", ").map(symptom => symptom.trim())) // De-concatenate symptomsQ values
+      .filter((symptom, index, self) => self.indexOf(symptom) === index); // Remove duplicates
 
-  if (!symptomsQ) {
+  if (symptomsQList.length === 0) {
       console.warn("No symptomsQ data found for the second query.");
       return;
   }
 
+  // Construct second query
   const symptomQuery = getSymptomQuery(symptomsQ);
 
   // Execute the second SPARQL query

@@ -50,7 +50,7 @@
                     Here you can find detailed information about various cancers, all sourced via Wikidata SPARQL queries. 
                     For each individual cancer type, the table below will outline possible symptoms, 
                     the types of drugs that are used to treat it and their location in the human body.
-                    for additional information on the symptoms, there is a supplementary table below,
+                    For additional information on the symptoms, there is a supplementary table below,
                     from which the associated Wikipedia page can be found.
 
                 </p>
@@ -70,7 +70,7 @@
         </footer>
     </div>
 
-    <!-- JavaScript section, this will made it possible to link SPARQL together with HTML, to represent the table -->
+    <!-- JavaScript section, this will make it possible to link SPARQL together with HTML, to represent the table -->
     <script src="query.js"></script>
     <script>
         /*This part of javascript is the function to hyperlink with the additional website research*/
@@ -133,7 +133,12 @@
     });
 
     resultsDiv.appendChild(table);
+
+}
     
+    function displaySymptomResults(result) {
+        const resultsDiv = document.getElementById('results');
+
     // Create second table for symptom links (query 2)
 const table2 = document.createElement('table');
 table2.innerHTML = `
@@ -159,6 +164,30 @@ result.results.bindings.forEach((binding) => {
 // Append the second table below the first
 resultsDiv.appendChild(table2);
 }
+
+// Integration with the SPARQL queries
+function executeQueries() {
+            const queryDispatcher = new SPARQLQueryDispatcher('https://query.wikidata.org/sparql');
+
+            // Execute the first query
+            queryDispatcher.query(getQuery(cancerName))
+                .then((result) => {
+                    displayResults(result);
+
+                    // Collect symptomsQ and execute the second query
+                    const symptomsQList = result.results.bindings
+                        .map(binding => binding.symptomsQ?.value || "")
+                        .flatMap(symptomsQ => symptomsQ.split(", ").map(s => s.trim()))
+                        .filter((symptom, index, self) => self.indexOf(symptom) === index);
+
+                    if (symptomsQList.length > 0) {
+                        queryDispatcher.query(getSymptomQuery(symptomsQList))
+                            .then(displaySymptomResults);
+                    }
+                });
+        }
+
+        executeQueries();
     </script>
     <script src="disclaimer.js"></script>
 </body>
