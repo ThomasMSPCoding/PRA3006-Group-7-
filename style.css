@@ -698,3 +698,9 @@ main {
 .accept-btn:hover {
     background-color: #0056b3;
 }
+
+#formResponse {
+    font-size: 1.2rem;
+    color: green;
+    margin-top: 20px;
+}
