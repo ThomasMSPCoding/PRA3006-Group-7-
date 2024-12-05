@@ -543,6 +543,8 @@ main {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     margin: 60px auto;
     max-width: 90%;
+    max-height:fit-content;
+    overflow: scroll;
 }
 
 .query-section h1 {
@@ -566,7 +568,7 @@ main {
 
 /* Results Container */
 .results-container {
-    max-height: 200px; 
+    max-height: fit-content; 
     overflow-y: auto; 
     border: 1px solid #ddd; 
     padding: 20px;
@@ -580,6 +582,7 @@ main {
     width: 100%;
     border-collapse: collapse;
     margin: 10px 0;
+    max-height:fit-content;
 }
 
 .results-container th,
