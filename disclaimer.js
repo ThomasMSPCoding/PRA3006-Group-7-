@@ -3,8 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const acceptBtn = document.getElementById('acceptDisclaimer');
     const disclaimerLink = document.getElementById('disclaimer-link');
 
-    if (!modal || !acceptBtn || !disclaimerLink) return;
-
     // Function to show the modal
     const showModal = () => {
         modal.style.visibility = 'visible';
@@ -18,8 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Show the modal when the "DISCLAIMER" link is clicked
-    disclaimerLink.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent default anchor behavior
+    disclaimerLink.addEventListener('click', () => {
         showModal();
     });
 
