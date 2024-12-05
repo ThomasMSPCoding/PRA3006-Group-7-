@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+            <!-- Disclaimer Modal -->
+            <div id="disclaimerModal" class="modal">
+                <div class="modal-content">
+                <h2>Important Disclaimer</h2>
+                     <p>
+                This website is a project and is not intended for medical use. If you are experiencing any
+                symptoms or have concerns, we strongly encourage you to consult a qualified medical professional.
+                Your health and well-being are our utmost priority.
+                    </p>
+                <button id="acceptDisclaimer" class="accept-btn">I Understand</button>
+                </div>
+            </div>
     <!-- Main Container -->
     <div class="main-container">
            <!-- Navigation Bar -->
@@ -29,7 +41,6 @@
         </ul>
     </nav>
 </header>
-
         <!-- Content Section -->
         <main>
             <section class="query-section">
@@ -51,10 +62,8 @@
         <footer>
             <div class="footer-links">
                 <div class="footer-nav">
-                    <a href="Source.html" class="footer-link">Contact Us</a>
-                    <a href="#" class="footer-link">Copy Right</a>
-                    <a href="#" class="footer-link">Disclaimer</a>
-                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="Source.html" class="footer-link">CONTACT US</a>
+                    <a href="#" class="footer-link" id="disclaimer-link">DISCLAIMER</a>
                 </div>
                 <p>© 2024 Programming in the Life Sciences Project Oncomap. All rights reserved</p>
             </div>
@@ -151,5 +160,6 @@ result.results.bindings.forEach((binding) => {
 resultsDiv.appendChild(table2);
 }
     </script>
+    <script src="disclaimer.js"></script>
 </body>
 </html>

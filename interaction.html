@@ -551,29 +551,45 @@
     <footer class="footer-links">
       <div class="footer-nav">
           <a href="Source.html" class="footer-link">CONTACT US</a>
-          <a href="#" class="footer-link">COPYRIGHT</a>
-          <a href="#" class="footer-link">DISCLAIMER</a>
-          <a href="#" class="footer-link">PRIVACY POLICY</a>
+          <a href="#" class="footer-link" id="disclaimer-link">DISCLAIMER</a>
       </div>
       <p>© 2024 Programming in the Life Sciences Project Oncomap. All rights reserved</p>
   </footer>
 </div>
+
+
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('disclaimerModal');
-    const acceptBtn = document.getElementById('acceptDisclaimer');
-
-    // Show the modal when the page loads
-    modal.style.visibility = 'visible';
-    modal.style.opacity = '1';
-
-    // Hide the modal when the user clicks "I Understand"
-    acceptBtn.addEventListener('click', () => {
+    //script for disclaimer
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('disclaimerModal');
+      const acceptBtn = document.getElementById('acceptDisclaimer');
+      const disclaimerLink = document.getElementById('disclaimer-link');
+      
+      // Function to show the modal
+      const showModal = () => {
+        modal.style.visibility = 'visible';
+        modal.style.opacity = '1';
+      };
+  
+      // Function to hide the modal
+      const hideModal = () => {
         modal.style.visibility = 'hidden';
         modal.style.opacity = '0';
+      };
+  
+      // Show the modal when the page loads
+      showModal();
+  
+      // Show the modal when the "DISCLAIMER" link is clicked
+      disclaimerLink.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default anchor behavior
+        showModal();
+      });
+  
+      // Hide the modal when the "I Understand" button is clicked
+      acceptBtn.addEventListener('click', hideModal);
     });
-});
-
-      </script>
+  </script>
+  
 </body>
 </html>

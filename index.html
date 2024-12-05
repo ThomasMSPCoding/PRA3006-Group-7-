@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="style.css"> <!--Links to css sytle sheet -->
 </head>
 <body>
+    <!-- Disclaimer Modal -->
+<div id="disclaimerModal" class="modal">
+    <div class="modal-content">
+        <h2>Important Disclaimer</h2>
+        <p>
+            This website is a project and is not intended for medical use. If you are experiencing any
+            symptoms or have concerns, we strongly encourage you to consult a qualified medical professional.
+            Your health and well-being are our utmost priority.
+        </p>
+        <button id="acceptDisclaimer" class="accept-btn">I Understand</button>
+    </div>
+</div>
+
     <!-- Main stuff -->
     <div class="main-container"> <!--Division of main conatainer -->
        <!-- Navigation Bar -->
@@ -91,9 +104,7 @@
         <footer class="footer-links">
             <div class="footer-nav">
                 <a href="Source.html" class="footer-link">CONTACT US</a>
-                <a href="#" class="footer-link">COPYRIGHT</a> <!--Prototype hyperlink -->
-                <a href="#" class="footer-link">DISCLAIMER</a> <!--Prototype hyperlink -->
-                <a href="#" class="footer-link">PRIVACY POLICY</a> <!--Prototype hyperlink -->
+                <a href="#" class="footer-link" id="disclaimer-link">DISCLAIMER</a> <!--Prototype hyperlink -->
             </div>
             <p>© 2024 PROGRAMMING IN THE LIFE SCIENCES PROJECT ONCOMAP. ALL RIGHTS RESERVED</p>
         </footer>
@@ -106,5 +117,7 @@
             section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     </script>
+    <script src="disclaimer.js"></script>
+
 </body>
 </html>
