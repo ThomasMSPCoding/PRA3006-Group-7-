@@ -1,12 +1,3 @@
-/**Yes we use a library called node.js for our SPARQL query. To explain what node.js is, it is a real time process and event connection with the website itself
- * It connect the query directly with the imported and exported data we aquired!
- * Here are examples we used node.js.
- * SPARQLQueryDispatcher Class is node.js component, this code uses the feature 'fetch' API, which is the primarily for client-side HTTP request
- * Than the DOM manipulation method(found in the displayResults code) feature codes like getElementById or createElement
- * All the node.js component runs the browser environment with a stable background.
- */
-
-
 /**
  * SPARQLQueryDispatcher Class
  * This class is designed to send SPARQL queries to a specified endpoint and return the results.
@@ -283,15 +274,22 @@ function displaySymptomResults(result) {
     // Get the HTML element where the results will be displayed
     const resultsDiv = document.getElementById('results');
 
+    // Check if a symptom table already exists, and remove it to prevent duplication
+    const existingSymptomTable = document.getElementById('symptomTable');
+    if (existingSymptomTable) {
+        existingSymptomTable.remove();
+    }
+
     // Create a new table element to display symptom information
     const symptomTable = document.createElement('table');
+    symptomTable.id = 'symptomTable'; // Assign an ID to the table for easy identification
 
     // Add the table header with column names
     symptomTable.innerHTML = `
-      <tr>
-        <th>Symptom</th>         <!-- Column for the symptom name -->
-        <th>Wikipedia Link</th>  <!-- Column for a link to a Wikipedia article about the symptom -->
-      </tr>
+        <tr>
+            <th>Symptom</th>         <!-- Column for the symptom name -->
+            <th>Wikipedia Link</th>  <!-- Column for a link to a Wikipedia article about the symptom -->
+        </tr>
     `;
 
     // Loop through the results of the second query and add a row for each symptom
@@ -303,14 +301,14 @@ function displaySymptomResults(result) {
         // Create a new row for the symptom table
         const row = document.createElement('tr');
         row.innerHTML = `
-          <td>${symptom}</td>                               <!-- Display the symptom name -->
-          <td><a href="${article}" target="_blank">Wikipedia</a></td> <!-- Link to the Wikipedia article -->
+            <td>${symptom}</td>                               <!-- Display the symptom name -->
+            <td><a href="${article}" target="_blank">Wikipedia</a></td> <!-- Link to the Wikipedia article -->
         `;
 
         // Add the row to the table
         symptomTable.appendChild(row);
     });
 
-    // Append the second table below the first table in the resultsDiv
+    // Append the new symptom table to the resultsDiv
     resultsDiv.appendChild(symptomTable);
 }
