@@ -312,3 +312,13 @@ function displaySymptomResults(result) {
     // Append the new symptom table to the resultsDiv
     resultsDiv.appendChild(symptomTable);
 }
+
+
+
+/**Yes we use a library called node.js for our SPARQL query. To explain what node.js is, it is a real time process and event connection with the website itself
+ * It connect the query directly with the imported and exported data we aquired!
+ * Here are examples we used node.js.
+ * SPARQLQueryDispatcher Class is node.js component, this code uses the feature 'fetch' API, which is the primarily for client-side HTTP request
+ * Than the DOM manipulation method(found in the displayResults code) feature codes like getElementById or createElement
+ * All the node.js component runs the browser environment with a stable background.
+ */
