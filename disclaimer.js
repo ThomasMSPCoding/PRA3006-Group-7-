@@ -1,35 +1,27 @@
-// Wait for the entire document to load before running the script
+//javascript for disclaimer modal on all pages except interaction page
 document.addEventListener('DOMContentLoaded', () => {
-    // Select elements from the DOM
-    const modal = document.getElementById('disclaimerModal'); // Modal element for the disclaimer
-    const acceptBtn = document.getElementById('acceptDisclaimer'); // Button to close the modal
-    const disclaimerLink = document.getElementById('disclaimer-link'); // Link to trigger the modal
+    const modal = document.getElementById('disclaimerModal');
+    const acceptBtn = document.getElementById('acceptDisclaimer');
+    const disclaimerLink = document.getElementById('disclaimer-link'); 
 
     // Exit early if any of the required elements are missing
     if (!modal || !acceptBtn || !disclaimerLink) return;
 
-    /**
-     * Displays the disclaimer modal by making it visible and setting opacity to 1.
-     */
+    //Show and Hide Modal functions
     const showModal = () => {
-        modal.style.visibility = 'visible'; // Makes the modal visible
-        modal.style.opacity = '1'; // Ensures the modal is fully opaque
+        modal.style.visibility = 'visible';
+        modal.style.opacity = '1'; 
     };
-
-    /**
-     * Hides the disclaimer modal by making it invisible and setting opacity to 0.
-     */
     const hideModal = () => {
-        modal.style.visibility = 'hidden'; // Hides the modal
-        modal.style.opacity = '0'; // Ensures the modal is fully transparent
+        modal.style.visibility = 'hidden'; 
+        modal.style.opacity = '0'; 
     };
 
-    // Add a click event listener to the "DISCLAIMER" link to show the modal
-    disclaimerLink.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevents the default behavior of the link
-        showModal(); // Calls the function to display the modal
+    //Calls Show modal when disclaimer link is clicked
+    disclaimerLink.addEventListener('click', () => {
+        showModal();
     });
 
-    // Add a click event listener to the "I Understand" button to hide the modal
-    acceptBtn.addEventListener('click', hideModal); // Calls the function to hide the modal
+    //Calls hide modal when accept button is clicked
+    acceptBtn.addEventListener('click', hideModal);
 });

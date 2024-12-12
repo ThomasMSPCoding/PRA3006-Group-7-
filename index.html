@@ -1,87 +1,54 @@
-<!DOCTYPE html> <!-- Specifies the document type as HTML5 -->
-<html lang="en"> <!-- Sets the language of the document to English -->
-<head> <!-- Contains metadata and resources related to the document -->
-    <meta charset="UTF-8"> <!-- Declares the character encoding as UTF-8, which supports most languages and symbols -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <!-- Makes the website responsive by adjusting its layout based on the device's screen size -->
-    <title>OncoMap</title> <!-- Sets the title of the webpage, which appears in the browser tab -->
+    <title>OncoMapProject</title> <!-- Sets the title of the webpage, which appears in the browser tab -->
     <link rel="stylesheet" href="style.css"> 
-    <!-- Links to an external CSS file named 'style.css', which contains the styling rules for the webpage -->
+    <!-- style.css contains styling for the index and contact pages -->
 </head>
-<body> <!-- The main content of the webpage starts here -->
 
-   <!-- Disclaimer Modal -->
+<body>
+   <!-- Disclaimer Modal, disclaimer pops up if 'disclaimer link at bottom of page is clicked' -->
 <div id="disclaimerModal" class="modal"> 
-    <!-- A container for the disclaimer modal. The 'id' is used to identify it in scripts, 
-         and the 'class' applies CSS styles (defined in your stylesheet). -->
-    
     <div class="modal-content"> 
-        <!-- The content area of the modal, styled separately for presentation. -->
-        
         <h2>Important Disclaimer</h2> 
-        <!-- A heading for the modal. 'h2' specifies the importance level (second most important heading). -->
-        
         <p>
-            <!-- Paragraph of text explaining the disclaimer -->
             This website is a project and is not intended for medical use. If you are experiencing any
             symptoms or have concerns, we strongly encourage you to consult a qualified medical professional.
             Your health and well-being are our utmost priority.
         </p>
         
         <button id="acceptDisclaimer" class="accept-btn">I Understand</button> 
-        <!-- A button that allows the user to close the modal. 
-             The 'id' makes it accessible in JavaScript, and 'class' applies CSS styling. -->
     </div>
 </div>
 
 
     <!-- Main stuff -->
-    <div class="main-container">  <!-- A container division for the main content of the page. 
-        The 'class' applies CSS styles to organize and style this section. -->
-
-<!-- Navigation Bar -->
+    <div class="main-container"> 
+<!-- Navigation Bar, displayed on top of screen, allows user to navigate between different pages of the website -->
 <header>
-            <!-- The header section, typically containing the navigation bar or title of the page. -->
     <nav>
-                    <!-- Navigation bar that organizes links for navigating between pages. -->
-
-        <ul class="nav-links"> <!-- An unordered list for the navigation links.
-            The 'class="nav-links"' applies CSS styles for the list layout. -->
-
-         <!-- Left-aligned navigation links -->
+        <ul class="nav-links"> <!-- An unordered list for the navigation links.-->
             <div class="nav-left">
-                    <!-- A group of navigation links displayed on the left side. -->
-
+                    <!-- navigation links displayed on left side. -->
                 <li><a href="index.html" class="nav-link">INDEX</a></li>
-<!-- A list item containing a link to the index page.
-                         The 'class="nav-link"' applies styles to the link. -->
                 <li><a href="interaction.html" class="nav-link">INTERACTIVE BODY</a></li>
-                        <!-- A list item containing a link to the "Interactive Body" page. -->
-
             </div>
-
             <!-- Center-aligned logo -->
             <div class="logo">
                 <!-- A container for the logo, centered within the navigation bar. -->
-
-                <a href="index.html"> <!--Return back button -->
-                     <!-- Clicking on the logo redirects the user to the index page. -->
-
+                <a href="index.html"> <!--Return back buttom, Clicking on the logo redirects the user to the index page. -->
                     <img src="img/Logo.png" alt="OncoMap Logo">
-                     <!-- The 'img' tag displays the logo image.
-                             'src' specifies the file location, and 'alt' provides a text description if the image fails to load. -->
                 </a>
             </div>
 
             <!-- Right-aligned navigation links -->
             <div class="nav-right">
-             <!-- A group of navigation links displayed on the right side. -->
+             <!-- navigation links displayed on right side. -->
                 <li><a href="research.html" class="nav-link">ADDITIONAL INFO</a></li>
-                                    <!-- A list item containing a link to the "Additional Info" page. -->
-
                 <li><a href="Source.html" class="nav-link">SOURCES</a></li>
-                                    <!-- A list item containing a link to the "Sources" page. -->
-
             </div>
         </ul>
     </nav>
@@ -90,17 +57,8 @@
         
        <!-- Main Section -->
 <main>
-    <!-- The main content area of the webpage.
-         The <main> tag is used for the core content that is directly related to the page's purpose. -->
-
     <div class="main-content">
-        <!-- A division for the main content inside the main section.
-             'class="main-content"' applies CSS styles to this specific section. -->
-
         <h1 class="main-title">
-            <!-- The main heading of the webpage. 
-                 'class="main-title"' applies CSS styles to customize its appearance. -->
-
             A clear guide to understanding cancer's<br> 
             journey through the human body
             <!-- The heading text that describes the purpose of the webpage.
@@ -112,13 +70,7 @@
 
      <!-- Secondary Section -->
 <section class="secondary-section">
-    <!-- The <section> tag defines a thematic grouping of content. 
-         Here, it represents a secondary section of the webpage.
-         'class="secondary-section"' applies CSS styles to this specific section. -->
-
-    <p class="subtitle">
-        <!-- A paragraph element styled as a subtitle. 
-             The 'class="subtitle"' applies custom styles, such as font size, color, or alignment. -->
+     <p class="subtitle">
         Maastricht University PRA3006
     </p>
 
@@ -138,37 +90,23 @@
 
  <!-- Welcome Section -->
 <div class="welcome-container">
-    <!-- A container division for the welcome section. 
-         'class="welcome-container"' applies styles to this container.
-         Classes can be reused for styling multiple elements on the page. -->
-
     <section class="welcome-section">
-        <!-- A semantic section specifically for the welcome content. 
-             'class="welcome-section"' applies styles to this part of the page. -->
-
-        <h1>WELCOME TO ONCOMAP</h1>
-        <!-- The main heading of the welcome section, emphasizing the title of the page. -->
-
+        <h1>WELCOME TO THE ONCOMAP PROJECT</h1>
         <hr /> 
-        <!-- A horizontal line used to visually separate content. -->
-
         <p>
-            <!-- A paragraph introducing the purpose of OncoMap -->
-            OncoMap is a student-led initiative from Maastricht University designed to help visualize
+            The OncoMap Project is a student-led initiative from Maastricht University designed to help visualize
             common cancer locations, understand their symptoms, and learn more about them.
         </p>
 
         <p>
-            <!-- Another paragraph providing additional details about the purpose of OncoMap -->
             Our goal is to provide an engaging and educational resource that simplifies the complex
             information surrounding cancer. Whether you're a curious learner or someone seeking to
-            expand their knowledge, OncoMap is here to guide you.
+            expand their knowledge, the OncoMap Project is here to guide you.
         </p>
 
         <p class="disclaimer">
-            <!-- A paragraph styled as a disclaimer, with additional emphasis on its importance -->
+            <!-- A paragraph styled as a disclaimer, with additional emphasis on its importance, this paragraph is different from the disclaimer pop-up -->
             <strong style="color: red;">Important Disclaimer:</strong> 
-            <!-- The <strong> tag makes the text bold. 'style="color: red;"' adds inline styling to make it red. -->
             This website is a project and is not intended for medical use. If you are experiencing any symptoms 
             or have concerns, we strongly encourage you to consult a qualified medical professional. 
             Your health and well-being are our utmost priority.
@@ -178,61 +116,39 @@
 
     
 <div class="final-section" id="get-started-section">
-    <!-- A container for the "Get Started" section.
-         'class="final-section"' applies CSS styles to this section.
-         'id="get-started-section"' uniquely identifies this section, allowing JavaScript or CSS to target it directly. -->
-
     <h2>GET STARTED</h2>
-    <!-- A second-level heading for the "Get Started" section, providing a title for this part of the page. -->
-
     <hr />
-    <!-- A horizontal line used as a visual divider below the heading. -->
-
     <div class="final-cards">
         <!-- A container for clickable cards that guide the user to different sections of the website. -->
-
         <div class="card explore-card" onclick="window.location.href='interaction.html';">
-            <!-- A clickable card styled with the 'card' and 'explore-card' classes.
-                 The 'onclick' attribute redirects the user to 'interaction.html' when clicked. -->
+            <!-- A clickable card, The 'onclick' attribute redirects the user to 'interaction.html' when clicked. -->
             <p>Explore the OncoMap</p>
-            <!-- Text displayed on the card, describing its purpose. -->
         </div>
 
         <div class="card cancer-card" onclick="window.location.href='research.html';">
-            <!-- Another clickable card styled with the 'card' and 'cancer-card' classes.
-                 The 'onclick' attribute redirects the user to 'research.html' when clicked. -->
+            <!-- Another clickable card, redirects the user to 'research.html' when clicked. -->
             <p>Additional Information</p>
-            <!-- Text displayed on the card, describing its purpose. -->
         </div>
     </div>
 
     <footer class="footer-links">
         <!-- Footer section containing navigation links and additional information. -->
-
         <div class="footer-nav">
-            <!-- A container for footer navigation links. -->
-
             <a href="Source.html" class="footer-link">CONTACT US</a>
             <!-- A clickable link styled with the 'footer-link' class that redirects to the "Source.html" page. -->
-
             <a href="#" class="footer-link" id="disclaimer-link">DISCLAIMER</a>
-            <!-- A clickable prototype link styled with the 'footer-link' class.
-                 The 'id="disclaimer-link"' allows JavaScript to target this link, likely to trigger the disclaimer modal. -->
+            <!-- clickable disclaimer link, will open the dislcaimer modal when clicked. -->
         </div>
 
         <p>© 2024 PROGRAMMING IN THE LIFE SCIENCES PROJECT ONCOMAP. ALL RIGHTS RESERVED</p>
-        <!-- Copyright information for the webpage. -->
     </footer>
 </div>
 
 <!-- JavaScript Section: Get Started Button with Scroll Down Function -->
 <script>
-    /**
-     * scrollToSection Function:
-     * This function smoothly scrolls the page to the "Get Started" section when triggered.
-     */
+    //scrollToSection Function:
+     //This function smoothly scrolls the page to the "Get Started" section when triggered.
     function scrollToSection() {
-        // Find the element with the ID 'get-started-section'
         const section = document.getElementById('get-started-section');
 
         // Scroll the page to the found section
@@ -249,4 +165,4 @@
 
 </body>
 </html>
-<!-- End of the HTML document -->
+
