@@ -515,10 +515,9 @@
     // Function to change the background image
     function changeImage(newImage) {
         const bodyImage = document.getElementById('body-image'); 
-        // Get the element with the ID 'body-image'
         
         bodyImage.setAttribute('xlink:href', newImage); 
-        // Update the 'xlink:href' attribute of the selected element to the new image path
+        // Updates the 'xlink:href' attribute of the selected element to the new image path
         // 'xlink:href' is used specifically in SVG for referencing image paths
     }
   </script>
@@ -535,46 +534,37 @@
 
 <!-- Additional Information Pop-ups -->
 <div id="infoModal" class="modal">
-  <!-- The outer container for the modal. 
-       It is hidden by default and shown when triggered by JavaScript -->
   <div class="modal-content">
-      <!-- The inner content of the modal, styled separately -->
+     <!-- The content and title get dynamically updated by the script executed further below -->
       <h2 id="modalTitle">Additional Info</h2>
-      <!-- A heading element where the title of the modal appears. 
-           The content can be dynamically updated using JavaScript -->
       <p id="modalDescription">
           Description goes here
-          <!-- A paragraph to display the additional information or description.
-               The content can also be dynamically updated -->
       </p>
       <button id="CloseData" class="accept-btn">Close</button>
-      <!-- A button to close the modal. 
-           It is linked to a JavaScript function to hide the modal -->
+      <!-- A button to close the modal. -->
   </div>
 </div>
 
 
 <script>
-  // Wait for the DOM to fully load before running the script
   document.addEventListener('DOMContentLoaded', () => {
-      // Get references to the modal and its elements
-      const modal = document.getElementById('infoModal'); // The modal container
-      const modalTitle = document.getElementById('modalTitle'); // The modal title element
-      const modalDescription = document.getElementById('modalDescription'); // The modal description element
-      const closeBtn = document.getElementById('CloseData'); // The close button
+      const modal = document.getElementById('infoModal');
+      const modalTitle = document.getElementById('modalTitle'); 
+      const modalDescription = document.getElementById('modalDescription'); 
+      const closeBtn = document.getElementById('CloseData'); 
 
       // Function to show the modal with specific content
       const showModal = (title, description) => {
-          modalTitle.textContent = title; // Set the modal title
-          modalDescription.textContent = description; // Set the modal description
-          modal.style.visibility = 'visible'; // Make the modal visible
-          modal.style.opacity = '1'; // Ensure the modal is fully opaque
+          modalTitle.textContent = title; 
+          modalDescription.textContent = description;
+          modal.style.visibility = 'visible';
+          modal.style.opacity = '1';
       };
 
       // Function to hide the modal
       const hideModal = () => {
-          modal.style.visibility = 'hidden'; // Hide the modal
-          modal.style.opacity = '0'; // Make the modal fully transparent
+          modal.style.visibility = 'hidden'; 
+          modal.style.opacity = '0'; 
       };
 
       // Add event listeners to body part elements (Male body parts)
@@ -684,25 +674,24 @@
 </script>
 
 
-<!-- Disclaimer Script -->
+<!-- Disclaimer Script specifically for interaction page, it differs from the others as it shows on the initial loading of the page-->
 <script>
-  // Wait for the entire DOM to load before executing the script
   document.addEventListener('DOMContentLoaded', () => {
       // Get references to elements in the DOM
-      const modal = document.getElementById('disclaimerModal'); // The modal container for the disclaimer
-      const acceptBtn = document.getElementById('acceptDisclaimer'); // The "I Understand" button
-      const disclaimerLink = document.getElementById('disclaimer-link'); // The "DISCLAIMER" link
+      const modal = document.getElementById('disclaimerModal'); 
+      const acceptBtn = document.getElementById('acceptDisclaimer'); 
+      const disclaimerLink = document.getElementById('disclaimer-link'); 
 
       // Function to show the modal
       const showModal = () => {
-          modal.style.visibility = 'visible'; // Makes the modal visible
-          modal.style.opacity = '1'; // Ensures the modal is fully opaque
+          modal.style.visibility = 'visible'; 
+          modal.style.opacity = '1'; 
       };
 
       // Function to hide the modal
       const hideModal = () => {
-          modal.style.visibility = 'hidden'; // Hides the modal
-          modal.style.opacity = '0'; // Makes the modal fully transparent
+          modal.style.visibility = 'hidden'; 
+          modal.style.opacity = '0'; 
       };
 
       // Automatically show the modal when the page loads
@@ -710,11 +699,11 @@
 
       // Show the modal when the "DISCLAIMER" link is clicked
       disclaimerLink.addEventListener('click', () => {
-          showModal(); // Call the showModal function to display the modal
+          showModal(); 
       });
 
       // Hide the modal when the "I Understand" button is clicked
-      acceptBtn.addEventListener('click', hideModal); // Call the hideModal function to close the modal
+      acceptBtn.addEventListener('click', hideModal); 
   });
 </script>
 
